@@ -18,6 +18,7 @@ public class SistemaControlInventario {
     public static void main(String[] args) {
         // TODO code application logic here
         //;lkjhgfd
+        //ldsjfkdshf
         
     }
     
