@@ -111,7 +111,7 @@ public class frmUsuarios extends javax.swing.JFrame {
 
         lblTipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblTipoUsuario.setForeground(new java.awt.Color(255, 0, 0));
-        lblTipoUsuario.setText("Elija que usuario es");
+        lblTipoUsuario.setText("Elija que tipo de usuario es");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
