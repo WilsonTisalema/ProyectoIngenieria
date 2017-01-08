@@ -79,7 +79,7 @@ public class frmAcceso extends javax.swing.JFrame {
                     .addComponent(lblUsuario)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblContraseña)
                                 .addComponent(btnIngresar))
                             .addGap(83, 83, 83)
