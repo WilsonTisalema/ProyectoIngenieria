@@ -25,7 +25,7 @@ public class frmEmpleados extends javax.swing.JFrame {
     public void desactivarInicio(){
         txtCedula.setEnabled(false);
         txtNomUno.setEnabled(false);
-        txtNom2.setEnabled(false);
+        txtNomDos.setEnabled(false);
         txtApellidoP.setEnabled(false);
         txtApellidoM.setEnabled(false);
         txtDireccion.setEnabled(false);
@@ -37,12 +37,12 @@ public class frmEmpleados extends javax.swing.JFrame {
         rbdMas.setEnabled(false);
         rbdFem.setEnabled(false);
         lblCedula.setVisible(false);
-        lblNombre1.setVisible(false);
-        lblNombre2.setVisible(false);
+        lblNomUno.setVisible(false);
+        lblNomDos.setVisible(false);
         lblApellidoP.setVisible(false);
         lblApellidoM.setVisible(false);
         lblDireccion.setVisible(false);
-        lblFecha.setVisible(false);
+        lblFechaNacimiento.setVisible(false);
         lblCelular.setVisible(false);
         lblEmail.setVisible(false);  
         lblSexo.setVisible(false);
@@ -89,9 +89,9 @@ public class frmEmpleados extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         lblCedula = new javax.swing.JLabel();
-        lblNombre1 = new javax.swing.JLabel();
+        lblNomUno = new javax.swing.JLabel();
         lblApellidoP = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
+        lblFechaNacimiento = new javax.swing.JLabel();
         lblDireccion = new javax.swing.JLabel();
         lblCelular = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
@@ -99,8 +99,8 @@ public class frmEmpleados extends javax.swing.JFrame {
         lblSexo = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        txtNom2 = new javax.swing.JTextField();
-        lblNombre2 = new javax.swing.JLabel();
+        txtNomDos = new javax.swing.JTextField();
+        lblNomDos = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
@@ -157,17 +157,17 @@ public class frmEmpleados extends javax.swing.JFrame {
         lblCedula.setForeground(new java.awt.Color(255, 0, 0));
         lblCedula.setText("Ingrese la cédula del empleado");
 
-        lblNombre1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        lblNombre1.setForeground(new java.awt.Color(255, 0, 0));
-        lblNombre1.setText("Ingrese el primer nombre del empleado");
+        lblNomUno.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblNomUno.setForeground(new java.awt.Color(255, 0, 0));
+        lblNomUno.setText("Ingrese el primer nombre del empleado");
 
         lblApellidoP.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblApellidoP.setForeground(new java.awt.Color(255, 0, 0));
         lblApellidoP.setText("Ingrese el apellido paterno del empleado");
 
-        lblFecha.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        lblFecha.setForeground(new java.awt.Color(255, 0, 0));
-        lblFecha.setText("Ingrese la fecha de nacimiento");
+        lblFechaNacimiento.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblFechaNacimiento.setForeground(new java.awt.Color(255, 0, 0));
+        lblFechaNacimiento.setText("Ingrese la fecha de nacimiento");
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 0, 0));
@@ -195,9 +195,9 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         jLabel23.setText("Segundo Nombre:");
 
-        lblNombre2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        lblNombre2.setForeground(new java.awt.Color(255, 0, 0));
-        lblNombre2.setText("Ingrese el segundo nombre del empleado");
+        lblNomDos.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblNomDos.setForeground(new java.awt.Color(255, 0, 0));
+        lblNomDos.setText("Ingrese el segundo nombre del empleado");
 
         lblTelefono.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblTelefono.setForeground(new java.awt.Color(255, 0, 0));
@@ -228,10 +228,10 @@ public class frmEmpleados extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFecha)
+                                    .addComponent(lblFechaNacimiento)
                                     .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblApellidoP)
-                                    .addComponent(lblNombre1)
+                                    .addComponent(lblNomUno)
                                     .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCelular))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
@@ -261,11 +261,11 @@ public class frmEmpleados extends javax.swing.JFrame {
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSexo)
                             .addComponent(lblEstado)
-                            .addComponent(lblNombre2)
+                            .addComponent(lblNomDos)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.Alignment.LEADING, 0, 150, Short.MAX_VALUE)
                                 .addComponent(txtApellidoM, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNom2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(txtNomDos, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(lblTelefono))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
@@ -285,11 +285,11 @@ public class frmEmpleados extends javax.swing.JFrame {
                             .addComponent(txtNomUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel23)
-                            .addComponent(txtNom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNomDos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNombre1)
-                            .addComponent(lblNombre2))
+                            .addComponent(lblNomUno)
+                            .addComponent(lblNomDos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -309,7 +309,7 @@ public class frmEmpleados extends javax.swing.JFrame {
                             .addComponent(rbdFem))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFecha)
+                            .addComponent(lblFechaNacimiento)
                             .addComponent(lblSexo))
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -531,9 +531,9 @@ public class frmEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEstado;
-    private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblNombre1;
-    private javax.swing.JLabel lblNombre2;
+    private javax.swing.JLabel lblFechaNacimiento;
+    private javax.swing.JLabel lblNomDos;
+    private javax.swing.JLabel lblNomUno;
     private javax.swing.JLabel lblSexo;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JRadioButton rbdFem;
@@ -546,7 +546,7 @@ public class frmEmpleados extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFechaNacimiento;
-    private javax.swing.JTextField txtNom2;
+    private javax.swing.JTextField txtNomDos;
     private javax.swing.JTextField txtNomUno;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
