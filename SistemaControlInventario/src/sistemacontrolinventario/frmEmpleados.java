@@ -446,7 +446,7 @@ public class frmEmpleados extends javax.swing.JFrame {
         );
 
         jLabel12.setFont(new java.awt.Font("Cambria", 0, 48)); // NOI18N
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleado.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleados.png"))); // NOI18N
         jLabel12.setText("EMPLEADOS");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
