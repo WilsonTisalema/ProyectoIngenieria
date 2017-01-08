@@ -246,7 +246,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese el c&#xf3;digo de barras"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el c&#xf3;digo de barras del producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNombre">
@@ -257,7 +257,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese el nombre"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el nombre del producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
@@ -268,7 +268,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese el proveedor"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el proveedor del producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCategoria">
@@ -279,7 +279,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Elija una categoria"/>
+            <Property name="text" type="java.lang.String" value="Elija la categoria del producto "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMedida">
@@ -290,7 +290,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Elija una medida"/>
+            <Property name="text" type="java.lang.String" value="Elija la medida del producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrecioC">
@@ -301,7 +301,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese el precio de compra"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el precio de compra del producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrecioV">
@@ -312,7 +312,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese el precio de venta"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el precio de venta del producto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCantidad">
@@ -323,7 +323,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ingrese la cantidad"/>
+            <Property name="text" type="java.lang.String" value="Ingrese la cantidad del producto"/>
           </Properties>
         </Component>
       </SubComponents>

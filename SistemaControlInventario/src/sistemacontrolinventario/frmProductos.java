@@ -87,35 +87,35 @@ public class frmProductos extends javax.swing.JFrame {
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCodigo.setForeground(new java.awt.Color(255, 0, 0));
-        lblCodigo.setText("Ingrese el código de barras");
+        lblCodigo.setText("Ingrese el código de barras del producto");
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 0, 0));
-        lblNombre.setText("Ingrese el nombre");
+        lblNombre.setText("Ingrese el nombre del producto");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel10.setText("Ingrese el proveedor");
+        jLabel10.setText("Ingrese el proveedor del producto");
 
         lblCategoria.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCategoria.setForeground(new java.awt.Color(255, 0, 0));
-        lblCategoria.setText("Elija una categoria");
+        lblCategoria.setText("Elija la categoria del producto ");
 
         lblMedida.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblMedida.setForeground(new java.awt.Color(255, 0, 0));
-        lblMedida.setText("Elija una medida");
+        lblMedida.setText("Elija la medida del producto");
 
         lblPrecioC.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblPrecioC.setForeground(new java.awt.Color(255, 0, 0));
-        lblPrecioC.setText("Ingrese el precio de compra");
+        lblPrecioC.setText("Ingrese el precio de compra del producto");
 
         lblPrecioV.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblPrecioV.setForeground(new java.awt.Color(255, 0, 0));
-        lblPrecioV.setText("Ingrese el precio de venta");
+        lblPrecioV.setText("Ingrese el precio de venta del producto");
 
         lblCantidad.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCantidad.setForeground(new java.awt.Color(255, 0, 0));
-        lblCantidad.setText("Ingrese la cantidad");
+        lblCantidad.setText("Ingrese la cantidad del producto");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
