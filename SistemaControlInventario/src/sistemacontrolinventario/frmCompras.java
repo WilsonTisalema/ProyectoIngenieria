@@ -148,25 +148,25 @@ public class frmCompras extends javax.swing.JFrame {
 
         lblCedula.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCedula.setForeground(new java.awt.Color(255, 0, 0));
-        lblCedula.setText("Ingrese la cédula del cliente");
+        lblCedula.setText("Ingrese la cédula del comprador");
 
         jLabel2.setText("Nombre:");
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 0, 0));
-        lblNombre.setText("Ingrese el nombre del cliente");
+        lblNombre.setText("Ingrese el nombre del comprador");
 
         jLabel3.setText("Apellido:");
 
         lblApellido.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblApellido.setForeground(new java.awt.Color(255, 0, 0));
-        lblApellido.setText("Ingrese el apellido del cliente");
+        lblApellido.setText("Ingrese el apellido del comprador");
 
         jLabel8.setText("Dirección:");
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 0, 0));
-        lblDireccion.setText("Ingrese la dirección del cliente ");
+        lblDireccion.setText("Ingrese la dirección del comprador ");
 
         jLabel6.setText("Celular:");
 
@@ -176,15 +176,15 @@ public class frmCompras extends javax.swing.JFrame {
 
         lblCelular.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCelular.setForeground(new java.awt.Color(255, 0, 0));
-        lblCelular.setText("Ingrese el celular del cliente");
+        lblCelular.setText("Ingrese el celular del comprador");
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        lblEmail.setText("Ingrese el e-mail del cliente");
+        lblEmail.setText("Ingrese el e-mail del comprador");
 
         lblTelefono.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblTelefono.setForeground(new java.awt.Color(255, 0, 0));
-        lblTelefono.setText("Ingrese el teléfono del cliente");
+        lblTelefono.setText("Ingrese el teléfono del comprador");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -288,7 +288,7 @@ public class frmCompras extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
