@@ -82,8 +82,10 @@ public class frmFacturacion extends javax.swing.JFrame {
 
         jLabel8.setText("Empleado:");
 
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
 
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1482225643_notepad.png"))); // NOI18N
         btnRegistrar.setText("Registrar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -232,6 +234,7 @@ public class frmFacturacion extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblDetalle);
 
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
 
         jLabel9.setText("Subtotal:");
