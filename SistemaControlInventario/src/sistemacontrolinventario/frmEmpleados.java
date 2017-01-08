@@ -101,6 +101,7 @@ public class frmEmpleados extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         txtNom2 = new javax.swing.JTextField();
         lblNombre2 = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -144,6 +145,12 @@ public class frmEmpleados extends javax.swing.JFrame {
         buttonGroup1.add(rbdFem);
         rbdFem.setText("Femenino");
 
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+
         cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SOLTERO(A)", "CASADO(A)", "DIVORCIADO(A)", "VIUDO(A)", "UNION LIBRE" }));
 
         lblCedula.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -164,15 +171,15 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         lblDireccion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblDireccion.setForeground(new java.awt.Color(255, 0, 0));
-        lblDireccion.setText("Ingrese la dirección ");
+        lblDireccion.setText("Ingrese la dirección del empleado");
 
         lblCelular.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCelular.setForeground(new java.awt.Color(255, 0, 0));
-        lblCelular.setText("Ingrese el celular");
+        lblCelular.setText("Ingrese el celular del empleado");
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 0, 0));
-        lblEmail.setText("Ingrese el e-mail");
+        lblEmail.setText("Ingrese el e-mail del empleado");
 
         lblApellidoM.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblApellidoM.setForeground(new java.awt.Color(255, 0, 0));
@@ -191,6 +198,10 @@ public class frmEmpleados extends javax.swing.JFrame {
         lblNombre2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNombre2.setForeground(new java.awt.Color(255, 0, 0));
         lblNombre2.setText("Ingrese el segundo nombre del empleado");
+
+        lblTelefono.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblTelefono.setForeground(new java.awt.Color(255, 0, 0));
+        lblTelefono.setText("Ingrese el teléfono del empleado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,7 +265,8 @@ public class frmEmpleados extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.Alignment.LEADING, 0, 150, Short.MAX_VALUE)
                                 .addComponent(txtApellidoM, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNom2, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(txtNom2, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(lblTelefono))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -319,8 +331,10 @@ public class frmEmpleados extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCelular)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCelular)
+                    .addComponent(lblTelefono))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
@@ -446,6 +460,10 @@ public class frmEmpleados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -517,6 +535,7 @@ public class frmEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblNombre2;
     private javax.swing.JLabel lblSexo;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JRadioButton rbdFem;
     private javax.swing.JRadioButton rbdMas;
     private javax.swing.JTable tblEmpleados;
