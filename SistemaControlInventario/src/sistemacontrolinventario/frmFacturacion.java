@@ -6,6 +6,13 @@
 
 package sistemacontrolinventario;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Wilson
@@ -17,7 +24,51 @@ public class frmFacturacion extends javax.swing.JFrame {
      */
     public frmFacturacion() {
         initComponents();
+        inicio();
     }
+    public void inicio(){
+      //  txtCedula.setEnabled(false);
+        desactivar();
+    }
+    public void desactivar(){
+        txtNombre.setEnabled(false);
+        txtDireccion.setEnabled(false);
+        txtEmpleado.setEnabled(false);
+        txtFecha.setEnabled(false);
+        txtIva.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        cbxProductos.setEnabled(false);
+        btnRegistrar.setVisible(false);
+        txtFecha.setText(fecha());
+    }
+    public void buscarCliente(){
+         String sql="";
+        sql="select * from clientes where CED_CLI LIKE '%"+txtCedula.getText()+"%'";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+              txtNombre.setText(rs.getString("NOM1_CLI")+" "+rs.getString("NOM2_CLI")+" "+rs.getString("APE_PAT_CLI")+" "+rs.getString("APE_MAT_CLI"));
+              txtDireccion.setText(rs.getString("DIR_CLI"));
+              txtTelefono.setText(rs.getString("CEL_CLI"));
+            }
+            if(txtNombre.getText().isEmpty()){
+                btnRegistrar.setVisible(true);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    
+    public String fecha(){
+    Date hoy= new Date(); 
+    SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy"); 
+    String fecha = sdf.format(hoy); 
+    return fecha;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +92,6 @@ public class frmFacturacion extends javax.swing.JFrame {
         txtFecha = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtEmpleado = new javax.swing.JTextField();
-        btnAceptar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -80,10 +130,13 @@ public class frmFacturacion extends javax.swing.JFrame {
 
         jLabel7.setText("Fecha:");
 
-        jLabel8.setText("Empleado:");
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar.png"))); // NOI18N
-        btnAceptar.setText("Aceptar");
+        jLabel8.setText("Empleado:");
 
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1482225643_notepad.png"))); // NOI18N
         btnRegistrar.setText("Registrar");
@@ -111,9 +164,7 @@ public class frmFacturacion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(btnAceptar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRegistrar))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
@@ -134,7 +185,6 @@ public class frmFacturacion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAceptar)
                     .addComponent(btnRegistrar))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -375,6 +425,14 @@ public class frmFacturacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIvaActionPerformed
 
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        // TODO add your handling code here:
+        if(txtCedula.getText().length()==9){
+             buscarCliente();
+        }
+       
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -411,7 +469,6 @@ public class frmFacturacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
