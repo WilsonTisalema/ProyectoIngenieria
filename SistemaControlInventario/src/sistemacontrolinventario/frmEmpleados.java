@@ -144,7 +144,7 @@ public class frmEmpleados extends javax.swing.JFrame {
             }
        int n= JOptionPane.showOptionDialog(null,"Desea crear una cuenta de usuario para este empleado ahora","Elija una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Si","No"}, "No");
     if(n==0){
-        frmUsuarios u=new frmUsuarios(txtCedula.getText());
+        frmUsuarios u=new frmUsuarios(txtCedula.getText(),"EMPLEADO");
         u.show();
     }else if(n==1){
         
@@ -414,7 +414,7 @@ public class frmEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -728,7 +728,7 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         jLabel17.setText("Tipo:");
 
-        cbxTipoEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxTipoEmpleado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADMINISTRADOR", "SECRETARIO", "CAJERO", "BODEGUERO" }));
 
         jLabel18.setText("Salario:");
 
@@ -843,6 +843,7 @@ public class frmEmpleados extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**

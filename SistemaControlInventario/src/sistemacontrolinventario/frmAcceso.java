@@ -44,12 +44,22 @@ public class frmAcceso extends javax.swing.JFrame {
                 String var4=rs.getString("CONT_USU");
                 if((var1==null ?  var3==null : var1.equals(var3))&&(var2==null ?  var4==null : var2.equals(var4)))
                 {
-                    if(rs.getString("TIP_USU").equals("ADMINISTRADOR(A)"))
+                    if(rs.getString("TIP_USU").equals("ADMINISTRADOR"))
                     {
                      Principal pr=new Principal();
                      this.dispose();
                      pr.show();
-                    }else if(rs.getString("TIP_USU").equals("SECRETARIO(A)"))
+                    }else if(rs.getString("TIP_USU").equals("SECRETARIO"))
+                    {
+                     Principal pr=new Principal();
+                     this.dispose();
+                     pr.show();
+                    }else if(rs.getString("TIP_USU").equals("CAJERO"))
+                    {
+                     Principal pr=new Principal();
+                     this.dispose();
+                     pr.show();
+                    }else if(rs.getString("TIP_USU").equals("BODEGUERO"))
                     {
                      Principal pr=new Principal();
                      this.dispose();
