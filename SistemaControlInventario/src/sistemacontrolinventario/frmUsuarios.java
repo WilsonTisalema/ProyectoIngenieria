@@ -126,6 +126,29 @@ public class frmUsuarios extends javax.swing.JFrame {
         }
        
     }
+    public boolean controlError(){
+        boolean error=false;
+         if(txtCedula.getText().isEmpty()){
+            txtCedula.requestFocus();
+            lblCedula.setVisible(true);
+            error=true;
+        }else if(!verific_cedula.verificaCedula(txtCedula.getText())){
+            txtCedula.requestFocus();
+            lblCedula.setText("Ingrese una cedula correcta");
+            lblCedula.setVisible(true);
+            error=true;
+        }
+        return error;
+    }
+    public void cedula(java.awt.event.KeyEvent evt){
+          int n = txtCedula.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 9) {
+            evt.consume();
+
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,7 +186,7 @@ public class frmUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel1.setText("Cédula:");
 
@@ -175,6 +198,12 @@ public class frmUsuarios extends javax.swing.JFrame {
 
         btnAgregar.setText("Agregar");
 
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
+
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaActionPerformed(evt);
@@ -184,6 +213,18 @@ public class frmUsuarios extends javax.swing.JFrame {
         jLabel6.setText("Nombre:");
 
         jLabel7.setText("Apellido:");
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 0, 0));
@@ -373,6 +414,37 @@ public class frmUsuarios extends javax.swing.JFrame {
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        // TODO add your handling code here:
+        cedula(evt);
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        String t =txtNombre.getText().toUpperCase();
+        txtNombre.setText(t);
+         int n = txtNombre.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here:
+        String t =txtApellido.getText().toUpperCase();
+        txtApellido.setText(t);
+         int n = txtApellido.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
 
     /**
      * @param args the command line arguments

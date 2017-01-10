@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sistemacontrolinventario;
 
 import java.sql.Connection;
@@ -205,6 +204,20 @@ public class frmEmpleados extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
+    }
+    public boolean controlError(){
+        boolean error=false;
+         if(txtCedula.getText().isEmpty()){
+            txtCedula.requestFocus();
+            lblCedula.setVisible(true);
+            error=true;
+        }else if(!verific_cedula.verificaCedula(txtCedula.getText())){
+            txtCedula.requestFocus();
+            lblCedula.setText("Ingrese una cedula correcta");
+            lblCedula.setVisible(true);
+            error=true;
+        }
+        return error;
     }
     
     public void provincias() {
@@ -535,6 +548,15 @@ public class frmEmpleados extends javax.swing.JFrame {
             cbxCanton.addItem("ZAMORA");
         }
     }
+    public void cedula(java.awt.event.KeyEvent evt){
+          int n = txtCedula.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 9) {
+            evt.consume();
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -637,6 +659,30 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido Materno:");
 
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
+
+        txtNomUno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomUnoKeyTyped(evt);
+            }
+        });
+
+        txtApellidoP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoPKeyTyped(evt);
+            }
+        });
+
+        txtApellidoM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoMKeyTyped(evt);
+            }
+        });
+
         lblCedula.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCedula.setForeground(new java.awt.Color(255, 0, 0));
         lblCedula.setText("Ingrese la cédula del empleado");
@@ -654,6 +700,12 @@ public class frmEmpleados extends javax.swing.JFrame {
         lblApellidoM.setText("Ingrese el apellido materno del empleado");
 
         jLabel23.setText("Segundo Nombre:");
+
+        txtNomDos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomDosKeyTyped(evt);
+            }
+        });
 
         lblNomDos.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNomDos.setForeground(new java.awt.Color(255, 0, 0));
@@ -943,6 +995,12 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         jLabel6.setText("Celular:");
 
+        txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCelularKeyTyped(evt);
+            }
+        });
+
         lblCelular.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCelular.setForeground(new java.awt.Color(255, 0, 0));
         lblCelular.setText("Ingrese el celular del empleado");
@@ -952,6 +1010,11 @@ public class frmEmpleados extends javax.swing.JFrame {
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
             }
         });
 
@@ -1242,6 +1305,85 @@ public class frmEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
         cantones();
     }//GEN-LAST:event_cbxProvinciaItemStateChanged
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        // TODO add your handling code here:
+        cedula(evt);
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtNomUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomUnoKeyTyped
+        // TODO add your handling code here:
+        String t =txtNomUno.getText().toUpperCase();
+        txtNomUno.setText(t);
+         int n = txtNomUno.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNomUnoKeyTyped
+
+    private void txtNomDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomDosKeyTyped
+        // TODO add your handling code here:
+        String t =txtNomDos.getText().toUpperCase();
+        txtNomDos.setText(t);
+         int n = txtNomDos.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNomDosKeyTyped
+
+    private void txtApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoPKeyTyped
+        // TODO add your handling code here:
+        String t =txtApellidoP.getText().toUpperCase();
+        txtApellidoP.setText(t);
+         int n = txtApellidoP.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtApellidoPKeyTyped
+
+    private void txtApellidoMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoMKeyTyped
+        // TODO add your handling code here:
+        String t =txtApellidoM.getText().toUpperCase();
+        txtApellidoM.setText(t);
+         int n = txtApellidoM.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtApellidoMKeyTyped
+
+    private void txtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularKeyTyped
+        // TODO add your handling code here:
+        int n = txtCelular.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 9) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtCelularKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        // TODO add your handling code here:
+         int n = txtTelefono.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 8) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     /**
      * @param args the command line arguments

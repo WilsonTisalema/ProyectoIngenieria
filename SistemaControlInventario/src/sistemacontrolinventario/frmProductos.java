@@ -215,6 +215,9 @@ public class frmProductos extends javax.swing.JFrame {
             }
         }
     }
+    public void controlError(){
+        
+    }
     
    
 

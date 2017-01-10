@@ -193,7 +193,15 @@ public class frmClientes extends javax.swing.JFrame {
             }
         }
     }
+    public void cedula(java.awt.event.KeyEvent evt){
+          int n = txtCedula.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 9) {
+            evt.consume();
 
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -248,11 +256,23 @@ public class frmClientes extends javax.swing.JFrame {
 
         jLabel1.setText("Cédula:");
 
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
+
         lblCedula.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCedula.setForeground(new java.awt.Color(255, 0, 0));
         lblCedula.setText("Ingrese la cédula del cliente");
 
         jLabel2.setText("Primer Nombre:");
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 0, 0));
@@ -268,6 +288,18 @@ public class frmClientes extends javax.swing.JFrame {
 
         jLabel10.setText("Apellido Materno:");
 
+        txtNombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombre2KeyTyped(evt);
+            }
+        });
+
+        txtApellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellido2KeyTyped(evt);
+            }
+        });
+
         lblNombre1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblNombre1.setForeground(new java.awt.Color(255, 0, 0));
         lblNombre1.setText("Ingrese el segundo nombre del cliente");
@@ -275,6 +307,12 @@ public class frmClientes extends javax.swing.JFrame {
         lblApellido1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblApellido1.setForeground(new java.awt.Color(255, 0, 0));
         lblApellido1.setText("Ingrese el apellido materno del cliente");
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -482,7 +520,19 @@ public class frmClientes extends javax.swing.JFrame {
 
         jLabel6.setText("Celular:");
 
+        txtCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCelularKeyTyped(evt);
+            }
+        });
+
         jLabel5.setText("Teléfono:");
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("E-mail:");
 
@@ -587,6 +637,85 @@ public class frmClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         activar();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        // TODO add your handling code here:
+        cedula(evt);
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        String t =txtNombre.getText().toUpperCase();
+        txtNombre.setText(t);
+         int n = txtNombre.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtNombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombre2KeyTyped
+        // TODO add your handling code here:
+        String t =txtNombre2.getText().toUpperCase();
+        txtNombre2.setText(t);
+         int n = txtNombre2.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNombre2KeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here:
+        String t =txtApellido.getText().toUpperCase();
+        txtApellido.setText(t);
+         int n = txtApellido.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtApellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellido2KeyTyped
+        // TODO add your handling code here:
+        String t =txtApellido2.getText().toUpperCase();
+        txtApellido2.setText(t);
+         int n = txtApellido2.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') || n > 19) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtApellido2KeyTyped
+
+    private void txtCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularKeyTyped
+        // TODO add your handling code here:
+         int n = txtCelular.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 9) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtCelularKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        // TODO add your handling code here:
+         int n = txtTelefono.getText().toString().length();
+        char c;
+        c = evt.getKeyChar();
+        if ((c < '0' || c > '9') || n > 8) {
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     /**
      * @param args the command line arguments
