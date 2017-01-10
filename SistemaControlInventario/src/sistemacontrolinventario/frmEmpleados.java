@@ -8,6 +8,7 @@ package sistemacontrolinventario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -152,10 +153,58 @@ public class frmEmpleados extends javax.swing.JFrame {
     }
     }
     public void modificar(){
-        
+          Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String gen = null;
+                if(rbdMas.isSelected()){
+                    gen="M";
+                }else if(rbdFem.isSelected()){
+                    gen="F";
+                }
+        String sql="";
+        sql="update empleados set NOM1_EMP ='"+txtNomUno.getText()+"',"
+                + "NOM2_EMP='"+txtNomDos.getText()+"',"
+                + "APE_PAT_EMP='"+txtApellidoP.getText()+"',"
+                + "APE_MAT_EMP='"+txtApellidoM.getText()+"',"
+                + "SEXO_EMP='"+gen+"',"
+                + "EST_CIV_EMP='"+cbxEstadoCivil.getSelectedItem().toString()+"',"
+                + "FEC_NAC_EMP='"+txtFechaNacimiento.getText()+"',"
+                + "PROV_PER_EMP='"+cbxProvincia.getSelectedItem().toString()+"',"
+                + "CAN_PER_EMP='"+cbxCanton.getSelectedItem().toString()+"',"
+                + "DIR_EMP='"+txtDireccion.getText()+"',"
+                + "TEL_EMP='"+txtTelefono.getText()+"',"
+                + "CEL_EMP='"+txtCelular.getText()+"',"
+                + "E_MAIL_EMP='"+txtEmail.getText()+"'"
+                + "TIP_EMP='"+cbxTipoEmpleado.getSelectedItem().toString()+"',"
+                + "SAL_EMP='"+txtSalario.getText()+"',"
+                + " where CED_EMP='"+txtCedula.getText().toString()+"'";
+        try {
+             PreparedStatement psd=cn.prepareStatement(sql);
+             int n=psd.executeUpdate();
+             if(n>0){
+                 JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex);
+         }
     }
     public void eliminar(){
-        
+        int n=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar");
+        if(n==0){
+        Conexion cc=new Conexion();
+        Connection cn=cc.conectar();
+        String sql="";
+        sql="delete from empleados where CED_EMP='"+txtCedula.getText().toString()+"'";
+            try {
+                PreparedStatement psd=cn.prepareStatement(sql);
+              int c=psd.executeUpdate();
+             if(c>0){
+                 JOptionPane.showMessageDialog(null, "Se elimino correctamente");
+             }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
     }
     
     public void provincias() {
