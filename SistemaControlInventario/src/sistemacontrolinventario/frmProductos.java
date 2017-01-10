@@ -173,6 +173,48 @@ public class frmProductos extends javax.swing.JFrame {
            return res;
 
     }
+     public void modificar(){
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String sql="";
+        sql="update productos set NOM_PROD ='"+txtNombre.getText()+"',"
+                + "COD_FAB_PROD='"+fabricante()+"',"
+                + "COD_PROV_PER='"+proveedor()+"',"
+                + "PREC_COM_PROD='"+txtPrecioC.getText()+"',"
+                + "PREC_VEN_PROD='"+txtPrecioV.getText()+"',"
+                + "PRESEN_PROD='"+cbxMedida.getSelectedItem().toString()+"',"
+                + "CAT_PROD='"+cbxCategoria.getSelectedItem().toString()+"',"
+                + "DESC_PROD='"+txtCantidad.getText()+"'"
+                 +"where COD_PROD='"+txtCodigo.getText()+"'";
+        try {
+             PreparedStatement psd=cn.prepareStatement(sql);
+             int n=psd.executeUpdate();
+             if(n>0){
+                 JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex);
+         }
+ 
+    }
+    public void eliminar(){
+         int n=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar");
+        if(n==0){
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String sql="";
+        sql="delete from productos where COD_PROD='"+txtCodigo.getText()+"'";
+            try {
+                PreparedStatement psd=cn.prepareStatement(sql);
+              int c=psd.executeUpdate();
+             if(c>0){
+                 JOptionPane.showMessageDialog(null, "Se elimino correctamente");
+             }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }
     
    
 

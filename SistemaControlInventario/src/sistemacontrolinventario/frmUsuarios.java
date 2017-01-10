@@ -9,6 +9,7 @@ package sistemacontrolinventario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -86,6 +87,44 @@ public class frmUsuarios extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "No se inserto");
             }
 
+    }
+    public void modificar(){
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String sql="";
+        sql="update usuarios set USU_USU ='"+txtUsuario.getText().toString()+"',"
+                + "CONT_USU='"+txtContraseña.getText().toString()+"'"
+                + " where CED_USU='"+txtCedula.getText().toString()+"'";
+        try {
+             PreparedStatement psd=cn.prepareStatement(sql);
+             int n=psd.executeUpdate();
+             if(n>0){
+                 JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex);
+         }
+ 
+}
+    
+    public void eliminar(){
+        int n=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar");
+        if(n==0){
+        Conexion cc=new Conexion();
+        Connection cn=cc.conectar();
+        String sql="";
+        sql="delete from usuarios where CED_USU='"+txtCedula.getText().toString()+"'";
+            try {
+                PreparedStatement psd=cn.prepareStatement(sql);
+              int c=psd.executeUpdate();
+             if(c>0){
+                 JOptionPane.showMessageDialog(null, "Se elimino correctamente");
+             }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+       
     }
 
     /**

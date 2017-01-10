@@ -140,6 +140,11 @@ public class frmFacturacion extends javax.swing.JFrame {
 
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1482225643_notepad.png"))); // NOI18N
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -430,8 +435,13 @@ public class frmFacturacion extends javax.swing.JFrame {
         if(txtCedula.getText().length()==9){
              buscarCliente();
         }
-       
     }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        frmClientes c=new frmClientes(txtCedula.getText());
+        c.show();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments

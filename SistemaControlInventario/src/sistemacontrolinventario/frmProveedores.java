@@ -92,6 +92,46 @@ public class frmProveedores extends javax.swing.JFrame {
         }
         return error;
     }
+    public void modificar(){
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String sql="";
+        sql="update proveedores set NOM_PROV ='"+txtNombre.getText()+"',"
+                + "DIR_PROV='"+txtDireccion.getText()+"',"
+                + "TEL_PROV='"+txtTelefono.getText()+"',"
+                + "E_MAIL_PROV='"+txtEmail.getText()+"'"
+                 +"where COD_PROV='"+txtCodigo.getText()+"'";
+        try {
+             PreparedStatement psd=cn.prepareStatement(sql);
+             int n=psd.executeUpdate();
+             if(n>0){
+                 JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex);
+         }
+ 
+        
+    }
+    public void eliminar(){
+         int n=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar");
+        if(n==0){
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String sql="";
+        sql="delete from proveedores where COD_PROV='"+txtCodigo.getText()+"'";
+            try {
+                PreparedStatement psd=cn.prepareStatement(sql);
+              int c=psd.executeUpdate();
+             if(c>0){
+                 JOptionPane.showMessageDialog(null, "Se elimino correctamente");
+             }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

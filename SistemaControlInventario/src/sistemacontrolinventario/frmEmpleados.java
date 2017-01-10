@@ -25,6 +25,7 @@ public class frmEmpleados extends javax.swing.JFrame {
     }
     public void inicio(){
         desactivarInicio();
+        provincias();
     }
     public void desactivarInicio(){
         txtCedula.setEnabled(false);
@@ -150,7 +151,341 @@ public class frmEmpleados extends javax.swing.JFrame {
         
     }
     }
+    public void modificar(){
+        
+    }
+    public void eliminar(){
+        
+    }
+    
+    public void provincias() {
+        cbxProvincia.removeAllItems();
+        cbxProvincia.addItem("SELECCIONE UNA PROVINCIA");
+        cbxProvincia.addItem("AZUAY");
+        cbxProvincia.addItem("BOLÍVAR");
+        cbxProvincia.addItem("CAÑAR");
+        cbxProvincia.addItem("CARCHI");
+        cbxProvincia.addItem("CHIMBORAZO");
+        cbxProvincia.addItem("COTOPAXI");
+        cbxProvincia.addItem("EL ORO");
+        cbxProvincia.addItem("ESMERALDAS");
+        cbxProvincia.addItem("GALÁPAGOS");
+        cbxProvincia.addItem("GUAYAS");
+        cbxProvincia.addItem("IMBABURA");
+        cbxProvincia.addItem("LOJA");
+        cbxProvincia.addItem("LOS RÍOS");
+        cbxProvincia.addItem("MANABÍ");
+        cbxProvincia.addItem("MORONA SANTIAGO");
+        cbxProvincia.addItem("NAPO");
+        cbxProvincia.addItem("ORELLANA");
+        cbxProvincia.addItem("PASTAZA");
+        cbxProvincia.addItem("PICHINCHA");
+        cbxProvincia.addItem("SANTA ELENA");
+        cbxProvincia.addItem("SANTO DOMINGO DE LOS TSÁCHILAS");
+        cbxProvincia.addItem("SUCUMBÍOS");
+        cbxProvincia.addItem("TUNGURAHUA");
+        cbxProvincia.addItem("ZAMORA CHINCHIPE");
+        cbxProvincia.setToolTipText("SELECCIONE UNO");
+    }
 
+    public void cantones() {
+        if (cbxProvincia.getSelectedIndex() == 1) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("CHORDELEG");
+            cbxCanton.addItem("CUENCA");
+            cbxCanton.addItem("EL PAN");
+            cbxCanton.addItem("GIRÓN");
+            cbxCanton.addItem("GUACHAPALA");
+            cbxCanton.addItem("GUALACEO");
+            cbxCanton.addItem("NABÓN");
+            cbxCanton.addItem("OÑA");
+            cbxCanton.addItem("PAUTE");
+            cbxCanton.addItem("PONCE ENRIQUEZ");
+            cbxCanton.addItem("PUCARÁ");
+            cbxCanton.addItem("SAN FERNANDO");
+            cbxCanton.addItem("SANTA ISABEL");
+            cbxCanton.addItem("SEVILLA DE ORO");
+            cbxCanton.addItem("SÍGSIG");
+
+        } else if (cbxProvincia.getSelectedIndex() == 2) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("CALUMA");
+            cbxCanton.addItem("CHILLANES");
+            cbxCanton.addItem("CHIMBO");
+            cbxCanton.addItem("ECHEANDÍA");
+            cbxCanton.addItem("GUARANDA");
+            cbxCanton.addItem("LAS NAVES");
+            cbxCanton.addItem("SAN MIGUEL");
+        } else if (cbxProvincia.getSelectedIndex() == 3) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("AZOGUES");
+            cbxCanton.addItem("BIBLIÁN");
+            cbxCanton.addItem("CAÑAR");
+            cbxCanton.addItem("DÉLEG");
+            cbxCanton.addItem("EL TAMBO");
+            cbxCanton.addItem("LA TRONCAL ");
+            cbxCanton.addItem("SUSCAL");
+        } else if (cbxProvincia.getSelectedIndex() == 4) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("BOLÍVAR");
+            cbxCanton.addItem("ESPEJO");
+            cbxCanton.addItem("MIRA");
+            cbxCanton.addItem("MONTÚFAR");
+            cbxCanton.addItem("SAN PEDRO DE HUACA");
+            cbxCanton.addItem("TULCÁN");
+        } else if (cbxProvincia.getSelectedIndex() == 5) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ALAUSÍ");
+            cbxCanton.addItem("CHAMBO");
+            cbxCanton.addItem("CHUNCHI");
+            cbxCanton.addItem("COLTA");
+            cbxCanton.addItem("CUMANDÁ");
+            cbxCanton.addItem("GUAMOTE");
+            cbxCanton.addItem("GUANO");
+            cbxCanton.addItem("PALLATANGA");
+            cbxCanton.addItem("PENIPE");
+            cbxCanton.addItem("RIOBAMBA");
+        } else if (cbxProvincia.getSelectedIndex() == 6) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("LA MANÁ");
+            cbxCanton.addItem("LATACUNGA");
+            cbxCanton.addItem("PANGUA");
+            cbxCanton.addItem("PUJILÍ");
+            cbxCanton.addItem("SALCEDO");
+            cbxCanton.addItem("SAQUISILÍ");
+            cbxCanton.addItem("SIGCHOS");
+
+        } else if (cbxProvincia.getSelectedIndex() == 7) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ARENILLAS");
+            cbxCanton.addItem("ATAHUALPA");
+            cbxCanton.addItem("BALSAS");
+            cbxCanton.addItem("CHILLA");
+            cbxCanton.addItem("EL GUABO");
+            cbxCanton.addItem("HUAQUILLAS");
+            cbxCanton.addItem("LAS LAJAS");
+            cbxCanton.addItem("MACHALA");
+            cbxCanton.addItem("MARCABELÍ");
+            cbxCanton.addItem("PASAJE");
+            cbxCanton.addItem("PIÑAS");
+            cbxCanton.addItem("PORTOVELO");
+            cbxCanton.addItem("SANTA ROSA");
+            cbxCanton.addItem("ZARUMA");
+        } else if (cbxProvincia.getSelectedIndex() == 8) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ATACAMES");
+            cbxCanton.addItem("ELOY ALFARO");
+            cbxCanton.addItem("ESMERALDAS");
+            cbxCanton.addItem("MUISNE");
+            cbxCanton.addItem("QUININDÉ");
+            cbxCanton.addItem("RIOVERDE");
+            cbxCanton.addItem("SAN LORENZO");
+        } else if (cbxProvincia.getSelectedIndex() == 9) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ISABELA");
+            cbxCanton.addItem("SAN CRISTÓBAL");
+            cbxCanton.addItem("SANTA CRUZ");
+        } else if (cbxProvincia.getSelectedIndex() == 10) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ALFREDO BAQUERIZO MORENO");
+            cbxCanton.addItem("BALAO");
+            cbxCanton.addItem("BALZAR");
+            cbxCanton.addItem("COLIMES");
+            cbxCanton.addItem("DAULE");
+            cbxCanton.addItem("EL EMPALME");
+            cbxCanton.addItem("EL TRIUNFO");
+            cbxCanton.addItem("DURÁN");
+            cbxCanton.addItem("GENERAL ANTONIO ELIZALDE");
+            cbxCanton.addItem("PLAYAS");
+            cbxCanton.addItem("GUAYAQUIL");
+            cbxCanton.addItem("ISIDRO AYORA");
+            cbxCanton.addItem("LOMAS DE SARGENTILLO");
+            cbxCanton.addItem("MARCELINO MARIDUEÑA");
+            cbxCanton.addItem("MILAGRO");
+            cbxCanton.addItem("NARANJAL");
+            cbxCanton.addItem("NARANJITO");
+            cbxCanton.addItem("NOBOL");
+            cbxCanton.addItem("PALESTINA");
+            cbxCanton.addItem("PEDRO CARBO");
+            cbxCanton.addItem("SALITRE");
+            cbxCanton.addItem("SAMBORONDÓN");
+            cbxCanton.addItem("SANTA LUCÍA");
+            cbxCanton.addItem("SIMÓN BOLÍVAR");
+            cbxCanton.addItem("YAGUACHI");
+        } else if (cbxProvincia.getSelectedIndex() == 11) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ANTONIO ANTE");
+            cbxCanton.addItem("COTACACHI");
+            cbxCanton.addItem("IBARRA");
+            cbxCanton.addItem("OTAVALO");
+            cbxCanton.addItem("PIMAMPIRO");
+            cbxCanton.addItem("SAN MIGUEL DE URCUQUÍ");
+        } else if (cbxProvincia.getSelectedIndex() == 12) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UNO");
+            cbxCanton.addItem("CALVAS");
+            cbxCanton.addItem("CATAMAYO");
+            cbxCanton.addItem("CELICA");
+            cbxCanton.addItem("CHAGUARPAMBA");
+            cbxCanton.addItem("ESPÍNDOLA");
+            cbxCanton.addItem("GONZANAMÁ");
+            cbxCanton.addItem("LOJA");
+            cbxCanton.addItem("MACARÁ");
+            cbxCanton.addItem("OLMEDO");
+            cbxCanton.addItem("PALTAS");
+            cbxCanton.addItem("PINDAL");
+            cbxCanton.addItem("PUYANGO");
+            cbxCanton.addItem("QUILANGA");
+            cbxCanton.addItem("SARAGURO");
+            cbxCanton.addItem("SOZORANGA");
+        } else if (cbxProvincia.getSelectedIndex() == 13) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("BABA");
+            cbxCanton.addItem("BABAHOYO");
+            cbxCanton.addItem("BUENA FE");
+            cbxCanton.addItem("MOCACHE");
+            cbxCanton.addItem("MONTALVO");
+            cbxCanton.addItem("PALENQUE");
+            cbxCanton.addItem("PUEBLOVIEJO");
+            cbxCanton.addItem("QUEVEDO");
+            cbxCanton.addItem("QUINSALOMA");
+            cbxCanton.addItem("URDANETA");
+            cbxCanton.addItem("VALENCIA");
+            cbxCanton.addItem("VENTANAS");
+            cbxCanton.addItem("VINCES");
+        } else if (cbxProvincia.getSelectedIndex() == 14) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("BABA");
+            cbxCanton.addItem("BABAHOYO");
+            cbxCanton.addItem("BUENA FE");
+            cbxCanton.addItem("MOCACHE");
+            cbxCanton.addItem("MONTALVO");
+            cbxCanton.addItem("PALENQUE");
+            cbxCanton.addItem("PUEBLOVIEJO");
+            cbxCanton.addItem("QUEVEDO");
+            cbxCanton.addItem("QUINSALOMA");
+            cbxCanton.addItem("URDANETA");
+            cbxCanton.addItem("VALENCIA");
+            cbxCanton.addItem("VENTANAS");
+            cbxCanton.addItem("VINCES");
+        } else if (cbxProvincia.getSelectedIndex() == 15) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("BOLÍVAR");
+            cbxCanton.addItem("CHONE");
+            cbxCanton.addItem("EL CARMEN");
+            cbxCanton.addItem("FLAVIO ALFARO");
+            cbxCanton.addItem("JAMA");
+            cbxCanton.addItem("JARAMIJÓ");
+            cbxCanton.addItem("JIPIJAPA");
+            cbxCanton.addItem("JUNÍN");
+            cbxCanton.addItem("MANTA");
+            cbxCanton.addItem("MONTECRISTI");
+            cbxCanton.addItem("OLMEDO");
+            cbxCanton.addItem("PAJÁN");
+            cbxCanton.addItem("PEDERNALES");
+            cbxCanton.addItem("PICHINCHA");
+            cbxCanton.addItem("PORTOVIEJO");
+            cbxCanton.addItem("PUERTO LÓPEZ");
+            cbxCanton.addItem("ROCAFUERTE");
+            cbxCanton.addItem("SAN VICENTE");
+            cbxCanton.addItem("SANTA ANA");
+            cbxCanton.addItem("SUCRE");
+            cbxCanton.addItem("TOSAGUA");
+            cbxCanton.addItem("VEINTICUATRO DE MAYO");
+        } else if (cbxProvincia.getSelectedIndex() == 16) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ARCHIDONA");
+            cbxCanton.addItem("CARLOS JULIO AROSEMENA TOLA");
+            cbxCanton.addItem("EL CHACO");
+            cbxCanton.addItem("QUIJOS");
+            cbxCanton.addItem("TENA");
+        } else if (cbxProvincia.getSelectedIndex() == 17) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("AGUARICO");
+            cbxCanton.addItem("ORELLANA");
+            cbxCanton.addItem("LA JOYA DE LOS SACHAS");
+            cbxCanton.addItem("LORETO");
+        } else if (cbxProvincia.getSelectedIndex() == 18) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("ARAJUNO");
+            cbxCanton.addItem("MERA");
+            cbxCanton.addItem("PASTAZA");
+            cbxCanton.addItem("SANTA CLARA");
+        } else if (cbxProvincia.getSelectedIndex() == 19) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("QUITO");
+            cbxCanton.addItem("CAYAMBE");
+            cbxCanton.addItem("MEJÍA");
+            cbxCanton.addItem("PEDRO MONCAYO");
+            cbxCanton.addItem("PEDRO VICENTE MALDONADO");
+            cbxCanton.addItem("PUERTO QUITO");
+            cbxCanton.addItem("RUMIÑAHUI");
+            cbxCanton.addItem("SAN MIGUEL DE LOS BANCOS");
+        } else if (cbxProvincia.getSelectedIndex() == 20) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("LA LIBERTAD");
+            cbxCanton.addItem("SALINAS");
+            cbxCanton.addItem("SANTA ELENA");
+        } else if (cbxProvincia.getSelectedIndex() == 21) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("SANTO DOMINGO");
+            cbxCanton.addItem("LA CONCORDIA");
+        } else if (cbxProvincia.getSelectedIndex() == 22) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UNO");
+            cbxCanton.addItem("CASCALES");
+            cbxCanton.addItem("CUYABENO");
+            cbxCanton.addItem("GONZALO PIZARRO");
+            cbxCanton.addItem("LAGO AGRIO");
+            cbxCanton.addItem("PUTUMAYO");
+            cbxCanton.addItem("SHUSHUFINDI");
+            cbxCanton.addItem("SUCUMBÍOS");
+        } else if (cbxProvincia.getSelectedIndex() == 23) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("AMBATO");
+            cbxCanton.addItem("BAÑOS");
+            cbxCanton.addItem("CEVALLOS");
+            cbxCanton.addItem("MOCHA");
+            cbxCanton.addItem("PATATE");
+            cbxCanton.addItem("PELILEO");
+            cbxCanton.addItem("QUERO");
+            cbxCanton.addItem("SANTIAGO DE PÍLLARO");
+            cbxCanton.addItem("TISALEO");
+        } else if (cbxProvincia.getSelectedIndex() == 24) {
+            cbxCanton.removeAllItems();
+            cbxCanton.addItem("SELECCIONE UN CANTÓN");
+            cbxCanton.addItem("CENTINELA DEL CÓNDOR");
+            cbxCanton.addItem("CHINCHIPE");
+            cbxCanton.addItem("EL PANGUI");
+            cbxCanton.addItem("NANGARITZA");
+            cbxCanton.addItem("PALANDA");
+            cbxCanton.addItem("PAQUISHA");
+            cbxCanton.addItem("YACUAMBI");
+            cbxCanton.addItem("YANTZAZA");
+            cbxCanton.addItem("ZAMORA");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -468,13 +803,21 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         jLabel15.setText("Provincia:");
 
-        cbxProvincia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MORONA SANTIAGO", "Item 2", "Item 3", "Item 4" }));
+        cbxProvincia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxProvinciaItemStateChanged(evt);
+            }
+        });
+        cbxProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxProvinciaActionPerformed(evt);
+            }
+        });
 
         lblProvincia.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblProvincia.setForeground(new java.awt.Color(255, 0, 0));
         lblProvincia.setText("Elija una provincia");
 
-        cbxCanton.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCanton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxCantonActionPerformed(evt);
@@ -504,9 +847,7 @@ public class frmEmpleados extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(lblDireccion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblDireccion)
                             .addComponent(txtDireccion)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel15)
@@ -584,9 +925,7 @@ public class frmEmpleados extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCelular))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -845,6 +1184,15 @@ public class frmEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
         guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void cbxProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProvinciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxProvinciaActionPerformed
+
+    private void cbxProvinciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProvinciaItemStateChanged
+        // TODO add your handling code here:
+        cantones();
+    }//GEN-LAST:event_cbxProvinciaItemStateChanged
 
     /**
      * @param args the command line arguments

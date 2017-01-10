@@ -26,11 +26,12 @@ public class frmClientes extends javax.swing.JFrame {
      * Creates new form frmClientes
      */
     DefaultTableModel modelo;
-    public frmClientes() {
+    public frmClientes(String ced) {
         initComponents();
-        inicio();
+        inicio(ced);
     }
-    public void inicio(){
+    public void inicio(String ced){
+         txtCedula.setText(ced);
          cargarTabla();
          desactivarInicio();
     }
@@ -148,6 +149,48 @@ public class frmClientes extends javax.swing.JFrame {
             tblClientes.setModel(modelo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    public void modificar(){
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        String sql="";
+        sql="update clientes set NOM1_CLI ='"+txtNombre.getText()+"',"
+                + "NOM2_CLI='"+txtNombre2.getText()+"',"
+                + "APE_PAT_CLI='"+txtApellido.getText()+"',"
+                + "APE_MAT_CLI='"+txtApellido2.getText()+"',"
+                + "DIR_CLI='"+txtDireccion.getText()+"',"
+                + "TEL_CLI='"+txtTelefono.getText()+"',"
+                + "CEL_CLI='"+txtCelular.getText()+"',"
+                + "E_MAIL_CLI='"+txtEmail.getText()+"'"
+                + " where CED_CLI='"+txtCedula.getText().toString()+"'";
+        try {
+             PreparedStatement psd=cn.prepareStatement(sql);
+             int n=psd.executeUpdate();
+             if(n>0){
+                 JOptionPane.showMessageDialog(null, "Se actualizo correctamente");
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex);
+         }
+    }
+    
+    public void eliminar(){
+         int n=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar");
+        if(n==0){
+        Conexion cc=new Conexion();
+        Connection cn=cc.conectar();
+        String sql="";
+        sql="delete from clientes where CED_CLI='"+txtCedula.getText().toString()+"'";
+            try {
+                PreparedStatement psd=cn.prepareStatement(sql);
+              int c=psd.executeUpdate();
+             if(c>0){
+                 JOptionPane.showMessageDialog(null, "Se elimino correctamente");
+             }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
     }
 
@@ -575,7 +618,7 @@ public class frmClientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmClientes().setVisible(true);
+                new frmClientes("").setVisible(true);
             }
         });
     }
