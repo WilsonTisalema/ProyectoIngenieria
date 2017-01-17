@@ -232,7 +232,7 @@ public class frmFacturacion extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        jLabel12.setText("SUPERMERCADO \"EL CARRITO\"");
+        jLabel12.setText("SUPERMERCADO \"\"");
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/supermarket.png"))); // NOI18N
 

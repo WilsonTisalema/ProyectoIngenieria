@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+//import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +25,6 @@ public class frmClientes extends javax.swing.JFrame {
     /**
      * Creates new form frmClientes
      */
-    DefaultTableModel modelo;
     public frmClientes(String ced) {
         initComponents();
         inicio(ced);
@@ -134,34 +133,34 @@ public class frmClientes extends javax.swing.JFrame {
         return error;
     }
      
-    public void cargarTabla(){
-        String[] titulos={"CEDULA","NOMBRES","APELLIDOS","DIRECCION","TELEFONO","CELULAR","E-MAIL"};
-        String[] registros=new String[7];
-        modelo=new DefaultTableModel(null, titulos);
-        String sql="";
-        sql="select * from clientes";
-        Conexion cc=new Conexion();
-        Connection cn=cc.conectar();
-        
-        
-        try {
-            Statement psd = cn.createStatement();
-            ResultSet rs=psd.executeQuery(sql);
-            while(rs.next()){
-                registros[0]=rs.getString("CED_CLI");
-                registros[1]=rs.getString("NOM1_CLI")+" "+rs.getString("NOM1_CLI");
-                registros[2]=rs.getString("APE_PAT_CLI")+" "+rs.getString("APE_MAT_CLI");
-                registros[3]=rs.getString("DIR_CLI");
-                registros[4]=rs.getString("TEL_CLI");
-                registros[5]=rs.getString("CEL_CLI");
-                registros[6]=rs.getString("E_MAIL_CLI");
-                modelo.addRow(registros);
-            }
-            tblClientes.setModel(modelo);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }
+//    public void cargarTabla(){
+//        String[] titulos={"CEDULA","NOMBRES","APELLIDOS","DIRECCION","TELEFONO","CELULAR","E-MAIL"};
+//        String[] registros=new String[7];
+//        modelo=new DefaultTableModel(null, titulos);
+//        String sql="";
+//        sql="select * from clientes";
+//        Conexion cc=new Conexion();
+//        Connection cn=cc.conectar();
+//        
+//        
+//        try {
+//            Statement psd = cn.createStatement();
+//            ResultSet rs=psd.executeQuery(sql);
+//            while(rs.next()){
+//                registros[0]=rs.getString("CED_CLI");
+//                registros[1]=rs.getString("NOM1_CLI")+" "+rs.getString("NOM1_CLI");
+//                registros[2]=rs.getString("APE_PAT_CLI")+" "+rs.getString("APE_MAT_CLI");
+//                registros[3]=rs.getString("DIR_CLI");
+//                registros[4]=rs.getString("TEL_CLI");
+//                registros[5]=rs.getString("CEL_CLI");
+//                registros[6]=rs.getString("E_MAIL_CLI");
+//                modelo.addRow(registros);
+//            }
+//            tblClientes.setModel(modelo);
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        }
+//    }
     public void modificar(){
         Conexion cc=new Conexion();
         Connection cn= cc.conectar();
@@ -245,9 +244,6 @@ public class frmClientes extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -476,35 +472,6 @@ public class frmClientes extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tblClientes);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         jLabel4.setFont(new java.awt.Font("Cambria", 0, 48)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.png"))); // NOI18N
         jLabel4.setText("CLIENTES");
@@ -615,13 +582,10 @@ public class frmClientes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
@@ -636,9 +600,7 @@ public class frmClientes extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -796,17 +758,14 @@ public class frmClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
-    private javax.swing.JTable tblClientes;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellido2;
     private javax.swing.JTextField txtCedula;
