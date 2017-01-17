@@ -32,7 +32,7 @@ public class frmClientes extends javax.swing.JFrame {
     }
     public void inicio(String ced){
          txtCedula.setText(ced);
-         cargarTabla();
+     //    cargarTabla();
          desactivarInicio();
     }
     public void desactivarInicio(){
