@@ -35,6 +35,9 @@ public class frmProductos extends javax.swing.JFrame {
         controlcbxFabricantes();
         controlcbxProveedores();
     }
+    public void limpiar(){
+        
+    }
     
     public void desactivar(){
         txtCodigo.setEnabled(false);

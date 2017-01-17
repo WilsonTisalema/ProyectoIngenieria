@@ -30,6 +30,13 @@ public class frmProveedores extends javax.swing.JFrame {
     public void inicio(){
        desactivar();
     }
+    public void limpiar(){
+        txtCodigo.setText("");
+        txtDireccion.setText("");
+        txtEmail.setText("");
+        txtNombre.setText("");
+        txtTelefono.setText("");
+    }
     public void desactivar(){
          txtCodigo.setEnabled(false);
         txtDireccion.setEnabled(false);
@@ -41,6 +48,17 @@ public class frmProveedores extends javax.swing.JFrame {
         lblEmail.setVisible(false);
         lblNombre.setVisible(false);
         lblTelefono.setVisible(false);
+        btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        btnGuardar.setEnabled(false);
+    }
+    public void activar(){
+        txtCodigo.setEnabled(true);
+        txtDireccion.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtTelefono.setEnabled(true);
     }
     public void guardar(){
         try {
@@ -282,6 +300,11 @@ public class frmProveedores extends javax.swing.JFrame {
         btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.png"))); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
@@ -290,6 +313,11 @@ public class frmProveedores extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
@@ -302,6 +330,11 @@ public class frmProveedores extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -389,6 +422,25 @@ public class frmProveedores extends javax.swing.JFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+        btnCancelar.setEnabled(true);
+        btnGuardar.setEnabled(true);
+        activar();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        btnNuevo.setEnabled(true);
+        desactivar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

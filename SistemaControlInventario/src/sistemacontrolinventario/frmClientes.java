@@ -35,6 +35,16 @@ public class frmClientes extends javax.swing.JFrame {
      //    cargarTabla();
          desactivarInicio();
     }
+    public void limpiar(){
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtApellido2.setText("");
+        txtCelular.setText("");
+        txtDireccion.setText("");
+        txtEmail.setText("");
+        txtTelefono.setText("");
+    }
     public void desactivarInicio(){
         txtCedula.setEnabled(false);
         txtNombre.setEnabled(false);
@@ -106,6 +116,7 @@ public class frmClientes extends javax.swing.JFrame {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(rootPane, ex);
             }
+        limpiar();
         }
     }
     public boolean controlError(){
@@ -426,6 +437,11 @@ public class frmClientes extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -635,6 +651,8 @@ public class frmClientes extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
+        btnNuevo.setEnabled(false);
+        btnCancelar.setEnabled(true);
         activar();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -716,6 +734,13 @@ public class frmClientes extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        btnNuevo.setEnabled(true);
+        desactivarInicio();
+        limpiar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

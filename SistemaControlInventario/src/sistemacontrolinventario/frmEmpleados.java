@@ -27,6 +27,25 @@ public class frmEmpleados extends javax.swing.JFrame {
         desactivarInicio();
         provincias();
     }
+    public void limpiar(){
+        txtCedula.setText("");
+        txtNomUno.setText("");
+        txtNomDos.setText("");
+        txtApellidoP.setText("");
+        txtApellidoM.setText("");
+        txtDireccion.setText("");
+        txtCelular.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+        txtSalario.setText("");
+        txtFechaNacimiento.setText("");
+        cbxEstadoCivil.setSelectedIndex(0);
+        cbxProvincia.setSelectedIndex(0);
+        //cbxCanton.setSelectedIndex(0);
+        cbxTipoEmpleado.setSelectedIndex(0);       
+        rbdMas.setSelected(false);
+        rbdFem.setSelected(false);
+    }
     public void desactivarInicio(){
         txtCedula.setEnabled(false);
         txtNomUno.setEnabled(false);
@@ -804,6 +823,11 @@ public class frmEmpleados extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
@@ -1289,6 +1313,8 @@ public class frmEmpleados extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
+        btnNuevo.setEnabled(false);
+        btnCancelar.setEnabled(true);
         activar();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -1384,6 +1410,13 @@ public class frmEmpleados extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        btnNuevo.setEnabled(true);
+        desactivarInicio();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

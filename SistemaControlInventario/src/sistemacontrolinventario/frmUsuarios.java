@@ -26,11 +26,44 @@ public class frmUsuarios extends javax.swing.JFrame {
         initComponents();
         inicio(ced,tipo);
     }
+    
+    public void limpiar(){
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtContraseña.setText("");
+        txtContraseña2.setText("");
+        txtApellido.setText("");
+        txtUsuario.setText("");
+        txtTipoUsuario.setText("");
+   }
+    public void activar(){
+        txtCedula.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtContraseña.setEnabled(true);
+        txtContraseña2.setEnabled(true);
+        txtApellido.setEnabled(true);
+        txtUsuario.setEnabled(true);
+    }
+    public void desactivar(){
+        txtCedula.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtContraseña.setEnabled(false);
+        txtContraseña2.setEnabled(false);
+        txtApellido.setEnabled(false);
+        txtUsuario.setEnabled(false);
+        lblNombre.setVisible(false);
+        lblApellido.setVisible(false);
+        lblCedula.setVisible(false);
+        lblContraseña.setVisible(false);
+        lblContraseña2.setVisible(false);
+        lblUsuario.setVisible(false);
+    }
     public void inicio(String c,String tipo){
         txtCedula.setText(c);
         txtTipoUsuario.setText(c);
         int n=c.length();
         if(n==10){
+          desactivar();  
           cargarInicio(c);    
         }
     }
