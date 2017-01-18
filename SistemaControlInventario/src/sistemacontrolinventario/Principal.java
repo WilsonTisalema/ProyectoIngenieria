@@ -71,12 +71,13 @@ public class Principal extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1482221584_icons-08.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484717368_malecostume.png"))); // NOI18N
         jMenu1.setText("Usuarios");
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem1.setText("Registrar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,98 +86,131 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem16.setText("Listado");
         jMenu1.add(jMenuItem16);
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem5.setText("Consultar");
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484717415_employee.png"))); // NOI18N
         jMenu2.setText("Empleados");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem2.setText("Registrar");
         jMenu2.add(jMenuItem2);
 
+        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem17.setText("Listado");
         jMenu2.add(jMenuItem17);
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem6.setText("Consultar");
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484717450_client_account_template.png"))); // NOI18N
         jMenu3.setText("Clientes");
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem3.setText("Registrar");
         jMenu3.add(jMenuItem3);
 
+        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem18.setText("Listado");
         jMenu3.add(jMenuItem18);
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem11.setText("Consultar");
         jMenu3.add(jMenuItem11);
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484720696_suppliers.png"))); // NOI18N
         jMenu4.setText("Proveedores");
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem7.setText("Registrar");
         jMenu4.add(jMenuItem7);
 
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem14.setText("Consultar");
         jMenu4.add(jMenuItem14);
 
+        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem19.setText("Listado");
         jMenu4.add(jMenuItem19);
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484720727_Cart_2.png"))); // NOI18N
         jMenu5.setText("Productos");
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem4.setText("Registrar");
         jMenu5.add(jMenuItem4);
 
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484723272_catalog.png"))); // NOI18N
         jMenuItem10.setText("Catalogo");
         jMenu5.add(jMenuItem10);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem13.setText("Consultar");
         jMenu5.add(jMenuItem13);
 
         jMenuBar1.add(jMenu5);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484720751_invoice.png"))); // NOI18N
         jMenu7.setText("Facturacion");
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem8.setText("Nuevo");
         jMenu7.add(jMenuItem8);
 
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem12.setText("Consultar");
         jMenu7.add(jMenuItem12);
 
+        jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem20.setText("Listado");
         jMenu7.add(jMenuItem20);
 
         jMenuBar1.add(jMenu7);
 
+        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484720774_stock_table-borders.png"))); // NOI18N
         jMenu9.setText("Pedidos");
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem9.setText("Nuevo");
         jMenu9.add(jMenuItem9);
 
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem15.setText("Consultar");
         jMenu9.add(jMenuItem15);
 
+        jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem21.setText("Listado");
         jMenu9.add(jMenuItem21);
 
         jMenuBar1.add(jMenu9);
 
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484720818_Help.png"))); // NOI18N
         jMenu8.setText("Acerca de");
         jMenuBar1.add(jMenu8);
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722582_exit-to-app.png"))); // NOI18N
         jMenu6.setText("Salir");
+        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
@@ -198,6 +232,11 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenu6MouseClicked
 
     /**
      * @param args the command line arguments

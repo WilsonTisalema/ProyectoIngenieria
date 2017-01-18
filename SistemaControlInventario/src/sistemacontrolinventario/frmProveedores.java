@@ -127,9 +127,7 @@ public class frmProveedores extends javax.swing.JFrame {
              }
          } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, ex);
-         }
- 
-        
+         }        
     }
     public void eliminar(){
          int n=JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar");
