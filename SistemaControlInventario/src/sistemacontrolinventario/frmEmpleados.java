@@ -14,18 +14,25 @@ import javax.swing.JOptionPane;
  *
  * @author Wilson
  */
-public class frmEmpleados extends javax.swing.JFrame {
+public class frmEmpleados extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmEmpleados
      */
-    public frmEmpleados() {
+    public frmEmpleados(String fun) {
         initComponents();
-        inicio();
+        inicio(fun);
     }
-    public void inicio(){
-        desactivarInicio();
+    public void inicio(String fun){
+        if(fun.equals("nuevo")){
+            desactivarInicio();
+            activar();
         provincias();
+        }else if(fun.equals("cargar")){
+            desactivarInicio();
+            txtCedula.setEnabled(true);
+        }
+        
     }
     public void limpiar(){
         txtCedula.setText("");
@@ -164,7 +171,7 @@ public class frmEmpleados extends javax.swing.JFrame {
             }
        int n= JOptionPane.showOptionDialog(null,"Desea crear una cuenta de usuario para este empleado ahora","Elija una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Si","No"}, "No");
     if(n==0){
-        frmUsuarios u=new frmUsuarios(txtCedula.getText(),"EMPLEADO");
+        frmUsuarios u=new frmUsuarios(txtCedula.getText(),"EMPLEADO","completar");
         u.show();
     }else if(n==1){
         
@@ -603,6 +610,7 @@ public class frmEmpleados extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         txtNomDos = new javax.swing.JTextField();
         lblNomDos = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -727,6 +735,8 @@ public class frmEmpleados extends javax.swing.JFrame {
         lblNomDos.setForeground(new java.awt.Color(255, 0, 0));
         lblNomDos.setText("Ingrese el segundo nombre del empleado");
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484780254_system-search.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -762,16 +772,21 @@ public class frmEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCedula)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar)))
+                        .addGap(0, 417, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCedula)
                 .addGap(12, 12, 12)
@@ -837,6 +852,11 @@ public class frmEmpleados extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1383,6 +1403,11 @@ public class frmEmpleados extends javax.swing.JFrame {
         desactivarInicio();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1413,12 +1438,13 @@ public class frmEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmEmpleados().setVisible(true);
+                new frmEmpleados("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;

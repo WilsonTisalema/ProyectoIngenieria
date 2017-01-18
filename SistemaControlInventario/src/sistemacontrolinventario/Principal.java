@@ -17,8 +17,71 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-    }
+       this.setExtendedState(Principal.MAXIMIZED_BOTH);
 
+    }
+    public void usuarios(){
+        frmUsuarios usu=new frmUsuarios("", "", "nuevo");
+        jDesktopPane1.add(usu);
+        usu.show();
+    }
+     public void buscarUsuarios(){
+        frmUsuarios usu=new frmUsuarios("", "", "buscar");
+        jDesktopPane1.add(usu);
+        usu.show();
+    }
+     public void clientes(){
+         frmClientes cli=new frmClientes("","nuevo");
+         jDesktopPane1.add(cli);
+         cli.show();
+     }
+     public void buscarClientes(){
+         frmClientes cli=new frmClientes("","buscar");
+         jDesktopPane1.add(cli);
+         cli.show();
+     }
+     public void productos(){
+         frmProductos pro=new frmProductos("nuevo");
+         jDesktopPane1.add(pro);
+         pro.show();
+     }
+     public void buscarProductos(){
+         frmProductos pro=new frmProductos("buscar");
+         jDesktopPane1.add(pro);
+         pro.show();
+     }
+     public void empleados(){
+         frmEmpleados emp=new frmEmpleados("nuevo");
+         jDesktopPane1.add(emp);
+         emp.show();
+     }
+     public void buscarEmpleados(){
+         frmEmpleados emp=new frmEmpleados("cargar");
+         jDesktopPane1.add(emp);
+         emp.show();
+     }
+     public void proveedores(){
+          frmProveedores prov=new frmProveedores("nuevo");
+         jDesktopPane1.add(prov);
+         prov.show();
+     }
+     public void buscarProveedores(){
+          frmProveedores prov=new frmProveedores("buscar");
+         jDesktopPane1.add(prov);
+         prov.show();
+     }
+     public void facturacion(){
+         
+     }
+     public void buscarFacturacion(){
+         
+     }
+     public void pedidos(){
+         
+     }
+     public void buscarPedidos(){
+         
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +155,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem5.setText("Consultar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -101,6 +169,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem2.setText("Registrar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
@@ -109,6 +182,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem6.setText("Consultar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -118,6 +196,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem3.setText("Registrar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
@@ -126,6 +209,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem11.setText("Consultar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem11);
 
         jMenuBar1.add(jMenu3);
@@ -135,14 +223,24 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem7.setText("Registrar");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem7);
 
         jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
-        jMenuItem14.setText("Consultar");
+        jMenuItem14.setText("Listado");
         jMenu4.add(jMenuItem14);
 
         jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
-        jMenuItem19.setText("Listado");
+        jMenuItem19.setText("Consultar");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem19);
 
         jMenuBar1.add(jMenu4);
@@ -152,6 +250,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem4.setText("Registrar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem4);
 
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484723272_catalog.png"))); // NOI18N
@@ -160,6 +263,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
         jMenuItem13.setText("Consultar");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem13);
 
         jMenuBar1.add(jMenu5);
@@ -231,12 +339,58 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        usuarios();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        buscarUsuarios();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        clientes();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        buscarClientes();
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        productos();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+        buscarProductos();
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        proveedores();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        // TODO add your handling code here:
+        buscarProveedores();
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        empleados();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        buscarEmpleados();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
