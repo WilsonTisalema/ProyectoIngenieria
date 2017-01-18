@@ -10,7 +10,7 @@ package sistemacontrolinventario;
  *
  * @author Wilson
  */
-public class frmCompras extends javax.swing.JFrame {
+public class frmCompras extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmCompras

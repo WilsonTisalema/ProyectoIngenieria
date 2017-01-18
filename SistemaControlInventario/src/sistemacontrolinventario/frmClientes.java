@@ -32,22 +32,25 @@ public class frmClientes extends javax.swing.JInternalFrame {
     public void inicio(String ced,String fun){
         if(fun.equals("nuevo")){
             desactivarLabels();
+            btnBuscar.setVisible(false);
             btnEliminar.setVisible(false);
             btnModificar.setVisible(false);
         }else if(fun.equals("nuevoC")){
               txtCedula.setText(ced);
+              btnBuscar.setVisible(false);
               txtCedula.setEnabled(false);
      //    cargarTabla();
-              btnEliminar.setVisible(false);
-            btnModificar.setVisible(false);
+              btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(false);
          desactivarLabels();
         }else if(fun.equals("buscar")){
             desactivarLabels();
             desactivarInicio();
-            btnEliminar.setVisible(false);
-            btnModificar.setVisible(false);
-            btnCancelar.setVisible(false);
-            btnGuardar.setVisible(false);
+            btnBuscar.setVisible(true);
+            btnCancelar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(false);
+            btnGuardar.setEnabled(false);
             txtCedula.setEnabled(true);
         }
        

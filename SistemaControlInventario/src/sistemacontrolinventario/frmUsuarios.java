@@ -65,8 +65,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     public void inicio(String c,String tipo,String fun){
         if(fun.equals("nuevo")){
         btnBuscar.setVisible(false);
-        btnEliminar.setVisible(false);
-        btnModificar.setVisible(false);
+        btnEliminar.setEnabled(false);
+        btnModificar.setEnabled(false);
         desactivarLabels();
         activar();
         }else if(fun.equals("completar")){
@@ -79,7 +79,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
           cargarInicio(c);    
         }
         }else if(fun.equals("buscar")){
-            jPanel2.setVisible(false);
+            btnCancelar.setEnabled(false);
+            btnEliminar.setEnabled(false);
+            btnModificar.setEnabled(false);
+            btnGuardar.setEnabled(false);
             btnBuscar.setVisible(true);
             desactivarLabels();
             desactivar();
@@ -243,7 +246,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -464,6 +467,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1482969987_trash_bin.png"))); // NOI18N
@@ -584,6 +592,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         desactivar();
         limpiar();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

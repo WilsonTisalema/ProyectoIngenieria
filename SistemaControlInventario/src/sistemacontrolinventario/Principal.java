@@ -71,17 +71,17 @@ public class Principal extends javax.swing.JFrame {
          prov.show();
      }
      public void facturacion(){
-         
+         frmFacturacion fac=new frmFacturacion();
+         jDesktopPane1.add(fac);
+         fac.show();
      }
-     public void buscarFacturacion(){
-         
-     }
+     
      public void pedidos(){
-         
+         frmCompras com=new frmCompras();
+         jDesktopPane1.add(com);
+         com.show();
      }
-     public void buscarPedidos(){
-         
-     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,11 +115,9 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -130,7 +128,7 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 802, Short.MAX_VALUE)
+            .addGap(0, 935, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,11 +276,12 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem8.setText("Nuevo");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem8);
-
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
-        jMenuItem12.setText("Consultar");
-        jMenu7.add(jMenuItem12);
 
         jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem20.setText("Listado");
@@ -296,11 +295,12 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722636_Add.png"))); // NOI18N
         jMenuItem9.setText("Nuevo");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu9.add(jMenuItem9);
-
-        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722701_magnifyingglass.png"))); // NOI18N
-        jMenuItem15.setText("Consultar");
-        jMenu9.add(jMenuItem15);
 
         jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484722648_document-03.png"))); // NOI18N
         jMenuItem21.setText("Listado");
@@ -392,6 +392,16 @@ public class Principal extends javax.swing.JFrame {
         buscarEmpleados();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        facturacion();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        pedidos();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,10 +452,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
