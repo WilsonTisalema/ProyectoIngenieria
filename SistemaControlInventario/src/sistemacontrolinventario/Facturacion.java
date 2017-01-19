@@ -6,19 +6,50 @@
 
 package sistemacontrolinventario;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Wilson
  */
-public class Facturacion extends javax.swing.JFrame {
+public class Facturacion extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Facturacion
      */
+    DefaultTableModel modelo;
     public Facturacion() {
         initComponents();
     }
-
+public void cargarUsuarios(String men){
+        String[] titulos={"CEDULA","NOMBRE","APELLIDO","USUARIO","CONTRASEÑA","TIPO USUARIO"};
+         String[] registros=new String[6];
+        modelo=new DefaultTableModel(null,titulos);
+        String sql="";
+        sql="select * from usuarios ";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                registros[0]=String.valueOf(rs.getInt("CED_USU"));
+                registros[1]=rs.getString("NOM_USU").trim();
+                registros[2]=rs.getString("APE_USU").trim();
+                registros[3]=rs.getString("USU_USU").trim();
+                registros[4]=String.valueOf(rs.getInt("CONT_USU"));
+                registros[5]=rs.getString("TIP_USU");
+                modelo.addRow(registros);
+            }
+             tblFacturas.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
