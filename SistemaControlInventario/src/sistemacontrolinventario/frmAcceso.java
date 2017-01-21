@@ -44,26 +44,31 @@ public class frmAcceso extends javax.swing.JFrame {
                 String var4=rs.getString("CONT_USU");
                 if((var1==null ?  var3==null : var1.equals(var3))&&(var2==null ?  var4==null : var2.equals(var4)))
                 {
-                    if(rs.getString("TIP_USU").equals("ADMINISTRADOR"))
+                    if(rs.getString("TIP_USU").equals("EMPLEADO")){
+                        String tip=tipoempleado(rs.getString("CED_USU"));
+                    if(tip.equals("ADMINISTRADOR"))
                     {
                      Principal pr=new Principal();
                      this.dispose();
                      pr.show();
-                    }else if(rs.getString("TIP_USU").equals("SECRETARIO"))
+                    }else if(tip.equals("SECRETARIO"))
                     {
                      Principal pr=new Principal();
                      this.dispose();
                      pr.show();
-                    }else if(rs.getString("TIP_USU").equals("CAJERO"))
+                    }else if(tip.equals("CAJERO"))
                     {
                      Principal pr=new Principal();
                      this.dispose();
                      pr.show();
-                    }else if(rs.getString("TIP_USU").equals("BODEGUERO"))
+                    }else if(tip.equals("BODEGUERO"))
                     {
                      Principal pr=new Principal();
                      this.dispose();
                      pr.show();
+                    }
+                    }else if(rs.getString("TIP_USU").equals("CLIENTE")){
+                        
                     }
                 }else{
                     lblContraseña.setVisible(true);
@@ -73,6 +78,23 @@ public class frmAcceso extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
         
+    }
+    public String tipoempleado(String ced){
+        
+         String sql="",res = "";
+        sql="select * from empleados where CED_EMP LIKE '%"+ced+"%'";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                res=rs.getString("TIP_EMP");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return res;
     }
        public void control4(java.awt.event.KeyEvent evt) {
         int n = txtUsuario.getText().toString().length();
@@ -215,7 +237,7 @@ public class frmAcceso extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnIngresar)
                     .addComponent(btnCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -226,6 +248,7 @@ public class frmAcceso extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
+        acceso();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped

@@ -34,7 +34,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         txtContraseña2.setText("");
         txtApellido.setText("");
         txtUsuario.setText("");
-        txtTipoUsuario.setText("");
    }
     public void activar(){
         txtCedula.setEnabled(true);
@@ -63,32 +62,74 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         lblUsuario.setVisible(false);
     }
     public void inicio(String c,String tipo,String fun){
+        desactivarLabels();
         if(fun.equals("nuevo")){
         btnBuscar.setVisible(false);
         btnEliminar.setEnabled(false);
         btnModificar.setEnabled(false);
-        desactivarLabels();
         activar();
         }else if(fun.equals("completar")){
-        txtCedula.setText(c);
+       
+        if(tipo.equals("EMPLEADO")){
+           cbxTipo.setSelectedIndex(0);
+            txtCedula.setText(c);
         btnBuscar.setVisible(false);
-        txtTipoUsuario.setText(tipo);
-        int n=c.length();
+        cbxTipo.setEnabled(false);
+         int n=c.length();
         if(n==10){
           desactivar();  
           cargarInicio(c);    
         }
+        }else if(tipo.equals("CLIENTE")){
+           cbxTipo.setSelectedIndex(1);
+            txtCedula.setText(c);
+        btnBuscar.setVisible(false);
+        cbxTipo.setEnabled(false);
+        }
+        txtUsuario.setEnabled(true);
+        txtContraseña.setEnabled(true);
+        txtContraseña2.setEnabled(true);
         }else if(fun.equals("buscar")){
             btnCancelar.setEnabled(false);
             btnEliminar.setEnabled(false);
             btnModificar.setEnabled(false);
             btnGuardar.setEnabled(false);
             btnBuscar.setVisible(true);
-            desactivarLabels();
             desactivar();
             txtCedula.setEnabled(true);
+        }else if(fun.equals("modificarE")){
+            btnGuardar.setEnabled(false);
+            btnBuscar.setEnabled(false);
+            txtCedula.setEnabled(false);
+            txtNombre.setEnabled(false);
+            txtApellido.setEnabled(false);
+            cbxTipo.setEnabled(false);
+            cargarModificar(c);
         }
         
+    }
+    public void cargarModificar(String c){
+        String sql="";
+        sql="select * from usuarios";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                if(rs.getString("CED_USU").equals(c)){
+              txtCedula.setText(rs.getString("CED_USU"));
+              txtNombre.setText(rs.getString("NOM_USU"));
+              txtApellido.setText(rs.getString("APE_USU"));
+              txtUsuario.setText(rs.getString("USU_USU"));
+              txtContraseña.setText(rs.getString("CONT_USU"));
+              txtContraseña2.setText(rs.getString("CONT_USU"));
+              
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }
     
     public void cargarInicio(String c){
@@ -113,25 +154,27 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+    
     public void guardar(){
          try {
                 Conexion cc = new Conexion();
                 Connection cn =  cc.conectar();
                 String CEDULA,NOMBRE,APELLIDO,CLAVE,USUARIO, TIPO;
                 String sql = "";
-                sql = "insert into usuarios(CED_USU,NOM_USU,APE_USU,USU_USU,CONT_USU,TIPO_USU) values(?,?,?,?,?)";
+                sql = "insert into usuarios(CED_USU,NOM_USU,APE_USU,USU_USU,CONT_USU,TIP_USU) values(?,?,?,?,?,?)";
                 CEDULA = txtCedula.getText().toUpperCase().trim();
                 NOMBRE = txtNombre.getText().toUpperCase().trim();
                 APELLIDO = txtApellido.getText().toUpperCase().trim();
                 USUARIO=txtUsuario.getText().toUpperCase().trim();
-                 CLAVE = txtContraseña.getText().toUpperCase().trim();
-                 TIPO=txtTipoUsuario.getText().toLowerCase().trim();
+                 CLAVE = txtContraseña.getText().trim();
+                 TIPO=cbxTipo.getSelectedItem().toString();
                 PreparedStatement psd = cn.prepareStatement(sql);
                 psd.setString(1, CEDULA);
                 psd.setString(2, NOMBRE);
                 psd.setString(3, APELLIDO);
                 psd.setString(4, USUARIO);
                 psd.setString(5, CLAVE);
+                psd.setString(6, TIPO);
 
                 int n = psd.executeUpdate();
                 if (n > 0) {
@@ -140,7 +183,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                 }
 
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, "No se inserto");
+                JOptionPane.showMessageDialog(rootPane, ex);
             }
 
     }
@@ -235,8 +278,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         lblContraseña = new javax.swing.JLabel();
         lblContraseña2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtTipoUsuario = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        cbxTipo = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -314,6 +357,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484780254_system-search.png"))); // NOI18N
 
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "EMPLEADO", "CLIENTE" }));
+        cbxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTipoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -358,9 +408,9 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblContraseña)
-                                    .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,8 +423,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(98, 98, 98)
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -424,8 +474,8 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jLabel8.setFont(new java.awt.Font("Cambria", 0, 48)); // NOI18N
@@ -463,6 +513,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
@@ -476,6 +531,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1482969987_trash_bin.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
@@ -541,7 +601,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -598,6 +658,20 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTipoActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        modificar();
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        eliminar();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -640,6 +714,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox cbxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -662,7 +737,6 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtContraseña2;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTipoUsuario;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

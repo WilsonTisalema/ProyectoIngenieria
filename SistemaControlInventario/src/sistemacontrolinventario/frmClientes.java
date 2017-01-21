@@ -52,6 +52,8 @@ public class frmClientes extends javax.swing.JInternalFrame {
             btnModificar.setEnabled(false);
             btnGuardar.setEnabled(false);
             txtCedula.setEnabled(true);
+        }else if(fun.equals("modificarE")){
+            
         }
        
     }
@@ -134,6 +136,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(null, "Se inserto correctamente");
                     cn.close();
                 }
+            
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(rootPane, ex);

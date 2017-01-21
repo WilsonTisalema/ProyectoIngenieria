@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,6 +29,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
     public Usuarios() {
         initComponents();
         cargarUsuarios("");
+        cargarModificar();
     }
     public void cargarUsuarios(String men){
         String[] titulos={"CEDULA","NOMBRE","APELLIDO","USUARIO","CONTRASEÑA","TIPO USUARIO"};
@@ -53,6 +56,21 @@ public class Usuarios extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+      public void cargarModificar(){
+        tblUsuarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                 if(tblUsuarios.getSelectedRow()!=-1){
+                    int fila=tblUsuarios.getSelectedRow();
+                    frmUsuarios u=new frmUsuarios(tblUsuarios.getValueAt(fila, 0).toString(), "", "modificarE");
+                    Principal.jDesktopPane1.add(u);
+                    u.show();
+                 }
+            }
+        });
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

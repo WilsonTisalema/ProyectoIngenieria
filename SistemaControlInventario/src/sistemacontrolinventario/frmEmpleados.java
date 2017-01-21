@@ -8,6 +8,7 @@ package sistemacontrolinventario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +50,6 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         txtTelefono.setText("");
         txtEmail.setText("");
         txtSalario.setText("");
-        txtFechaNacimiento.setText("");
         cbxEstadoCivil.setSelectedIndex(0);
         cbxProvincia.setSelectedIndex(0);
         //cbxCanton.setSelectedIndex(0);
@@ -68,7 +68,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         txtTelefono.setEnabled(false);
         txtEmail.setEnabled(false);
         txtSalario.setEnabled(false);
-        txtFechaNacimiento.setEnabled(false);
+        calendar.setEnabled(false);
         cbxEstadoCivil.setEnabled(false);
         cbxProvincia.setEnabled(false);
         cbxCanton.setEnabled(false);
@@ -108,7 +108,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         txtTelefono.setEnabled(true);
         txtEmail.setEnabled(true);
         txtSalario.setEnabled(true);
-        txtFechaNacimiento.setEnabled(true);
+        calendar.setEnabled(true);
         cbxEstadoCivil.setEnabled(true);
         cbxProvincia.setEnabled(true);
         cbxCanton.setEnabled(true);
@@ -118,6 +118,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         btnGuardar.setEnabled(true);
     }
     public void guardar(){
+        if(!controlError()){
         try {
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
@@ -131,7 +132,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 NOM2_EMP=txtNomDos.getText();
                 APE_PAT_EMP=txtApellidoP.getText();
                 APE_MAT_EMP=txtApellidoM.getText();
-                FEC_NAC_EMP=txtFechaNacimiento.getText();
+                FEC_NAC_EMP=new SimpleDateFormat("dd/MMM/yyyy").format(calendar.getDate());;
                 if(rbdMas.isSelected()){
                     SEXO_EMP="M";
                 }else if(rbdFem.isSelected()){
@@ -166,21 +167,24 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
 
                 int n = psd.executeUpdate();
                 if (n > 0) {
-                    //  JOptionPane.showMessageDialog(null, "Se inserto correctamente");
-                    cn.close();
+                      JOptionPane.showMessageDialog(null, "Se inserto correctamente");
                 }
+        int c= JOptionPane.showOptionDialog(null,"Desea crear una cuenta de usuario para este empleado ahora","Elija una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Si","No"}, "No");
+        if(c==0){
+        frmUsuarios u=new frmUsuarios(txtCedula.getText(),"EMPLEADO","completar");
+        Principal.jDesktopPane1.add(u);
+        u.show();
+        }else if(c==1){
+         
+     }
+        limpiar();
 
             } catch (Exception ex) {
-                // JOptionPane.showMessageDialog(rootPane, "No se inserto");
+                 JOptionPane.showMessageDialog(rootPane, ex);
             }
-       int n= JOptionPane.showOptionDialog(null,"Desea crear una cuenta de usuario para este empleado ahora","Elija una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Si","No"}, "No");
-    if(n==0){
-        frmUsuarios u=new frmUsuarios(txtCedula.getText(),"EMPLEADO","completar");
-        u.show();
-    }else if(n==1){
-        
+        }
     }
-    }
+    
     public void modificar(){
           Conexion cc=new Conexion();
         Connection cn= cc.conectar();
@@ -197,7 +201,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 + "APE_MAT_EMP='"+txtApellidoM.getText()+"',"
                 + "SEXO_EMP='"+gen+"',"
                 + "EST_CIV_EMP='"+cbxEstadoCivil.getSelectedItem().toString()+"',"
-                + "FEC_NAC_EMP='"+txtFechaNacimiento.getText()+"',"
+                + "FEC_NAC_EMP='"+new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate())+"',"
                 + "PROV_PER_EMP='"+cbxProvincia.getSelectedItem().toString()+"',"
                 + "CAN_PER_EMP='"+cbxCanton.getSelectedItem().toString()+"',"
                 + "DIR_EMP='"+txtDireccion.getText()+"',"
@@ -652,9 +656,8 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         rbdFem = new javax.swing.JRadioButton();
         lblSexo = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtFechaNacimiento = new javax.swing.JTextField();
         lblFechaNacimiento = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        calendar = new com.toedter.calendar.JDateChooser();
         jPanel10 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         cbxTipoEmpleado = new javax.swing.JComboBox();
@@ -756,22 +759,21 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblApellidoP)
                             .addComponent(lblNomUno)
-                            .addComponent(txtNomUno, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(txtNomUno, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                             .addComponent(txtApellidoP))
-                        .addGap(68, 68, 68)
+                        .addGap(119, 119, 119)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel4))
                             .addComponent(jLabel23))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblApellidoM)
                             .addComponent(lblNomDos)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtApellidoM, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNomDos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(txtNomDos, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(txtApellidoM))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCedula)
@@ -779,7 +781,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                                 .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar)))
-                        .addGap(0, 417, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1122,7 +1124,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEstado)
                     .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1136,7 +1138,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFechaNacimiento)
-                    .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62))
         );
         jPanel8Layout.setVerticalGroup(
@@ -1145,9 +1147,9 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblFechaNacimiento))
                     .addGroup(jPanel8Layout.createSequentialGroup()
@@ -1163,19 +1165,6 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                         .addComponent(lblEstado))
                     .addComponent(jLabel11))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -1209,7 +1198,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                     .addComponent(lblTipo)
                     .addComponent(cbxTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1239,16 +1228,13 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -1261,9 +1247,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1273,7 +1257,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -1434,6 +1418,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.ButtonGroup buttonGroup1;
+    private com.toedter.calendar.JDateChooser calendar;
     private javax.swing.JComboBox cbxCanton;
     private javax.swing.JComboBox cbxEstadoCivil;
     private javax.swing.JComboBox cbxProvincia;
@@ -1463,7 +1448,6 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblApellidoM;
     private javax.swing.JLabel lblApellidoP;
     private javax.swing.JLabel lblCanton;
@@ -1488,7 +1472,6 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNomDos;
     private javax.swing.JTextField txtNomUno;
     private javax.swing.JTextField txtSalario;
