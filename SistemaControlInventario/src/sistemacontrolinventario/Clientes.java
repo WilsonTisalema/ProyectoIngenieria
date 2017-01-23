@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,6 +27,7 @@ public class Clientes extends javax.swing.JInternalFrame {
     public Clientes() {
         initComponents();
         cargarClientes("");
+        cargarModificar();
     }
     public void cargarClientes(String men){
         String[] titulos={"CEDULA","NOMBRE","DIRECCION","TELEFONO","CELULAR","E-MAIL"};
@@ -51,6 +54,21 @@ public class Clientes extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+    }
+     public void cargarModificar(){
+        tblClientes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                 if(tblClientes.getSelectedRow()!=-1){
+                    int fila=tblClientes.getSelectedRow();
+                       frmClientes emp=new frmClientes(tblClientes.getValueAt(fila, 0).toString(),"cargar"); 
+                       Principal.jDesktopPane1.add(emp);
+                       emp.show();
+                        
+                 }
+            }
+        });
     }
 
     /**

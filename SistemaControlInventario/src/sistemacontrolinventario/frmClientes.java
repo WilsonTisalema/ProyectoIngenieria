@@ -35,14 +35,6 @@ public class frmClientes extends javax.swing.JInternalFrame {
             btnBuscar.setVisible(false);
             btnEliminar.setVisible(false);
             btnModificar.setVisible(false);
-        }else if(fun.equals("nuevoC")){
-              txtCedula.setText(ced);
-              btnBuscar.setVisible(false);
-              txtCedula.setEnabled(false);
-     //    cargarTabla();
-              btnEliminar.setEnabled(false);
-            btnModificar.setEnabled(false);
-         desactivarLabels();
         }else if(fun.equals("buscar")){
             desactivarLabels();
             desactivarInicio();
@@ -52,14 +44,44 @@ public class frmClientes extends javax.swing.JInternalFrame {
             btnModificar.setEnabled(false);
             btnGuardar.setEnabled(false);
             txtCedula.setEnabled(true);
-        }else if(fun.equals("modificarE")){
+        }else if(fun.equals("cargar")){
+            desactivarLabels();
+            cargarDatos(ced);
             
         }
        
     }
+    public void cargarDatos(String ced){
+        txtCedula.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        String sql="";
+        sql="select * from clientes";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                if(rs.getString("CED_CLI").equals(ced)){
+              txtCedula.setText(rs.getString("CED_CLI"));
+              txtNombre.setText(rs.getString("NOM1_CLI"));
+              txtNombre2.setText(rs.getString("NOM2_CLI"));
+              txtApellido.setText(rs.getString("APE_PAT_CLI"));
+              txtApellido2.setText(rs.getString("APE_MAT_CLI"));
+              txtCelular.setText(rs.getString("CEL_CLI"));
+              txtTelefono.setText(rs.getString("TEL_CLI"));
+              txtEmail.setText(rs.getString("E_MAIL_CLI"));
+              txtDireccion.setText(rs.getString("DIR_CLI"));
+              }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
     public void limpiar(){
         txtCedula.setText("");
         txtNombre.setText("");
+        txtNombre2.setText("");
         txtApellido.setText("");
         txtApellido2.setText("");
         txtCelular.setText("");
@@ -446,6 +468,11 @@ public class frmClientes extends javax.swing.JInternalFrame {
         btnModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
@@ -727,6 +754,11 @@ public class frmClientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        modificar();
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments

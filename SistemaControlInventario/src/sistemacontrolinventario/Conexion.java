@@ -17,24 +17,24 @@ import javax.swing.JOptionPane;
  * @author Wilson
  */
 public class Conexion {
-//    Connection conexion;
-//    public Connection conectar(){
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            conexion=DriverManager.getConnection("jdbc:mysql://localhost/inventario","root","");
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, "Error en la conexion");
-//        }
-//        return conexion;
-//    }
-    Connection conexion=null;
+    Connection conexion;
     public Connection conectar(){
-        try { 
-            Class.forName("oracle.jdbc.OracleDriver");
-            conexion=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SUPERMERCADO","SUPERMERCADO");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion=DriverManager.getConnection("jdbc:mysql://localhost/inventario","root","");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Error en la conexion");
         }
         return conexion;
     }
+//    Connection conexion=null;
+//    public Connection conectar(){
+//        try { 
+//            Class.forName("oracle.jdbc.OracleDriver");
+//            conexion=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SUPERMERCADO","SUPERMERCADO");
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        }
+//        return conexion;
+//    }
 }

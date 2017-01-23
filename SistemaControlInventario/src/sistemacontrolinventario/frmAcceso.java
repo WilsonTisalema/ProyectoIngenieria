@@ -33,43 +33,39 @@ public class frmAcceso extends javax.swing.JFrame {
           Conexion cc=new Conexion();
         Connection cn= cc.conectar();
         String sql="";
-        sql="select * from usuarios";
+        sql="select * from empleados";
         String var1=txtUsuario.getText();
         String var2=txtContraseña.getText();
         try {
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
-                String var3=rs.getString("CED_USU");
-                String var4=rs.getString("CONT_USU");
+                String var3=rs.getString("CED_EMP");
+                String var4=rs.getString("CLAVE_EMP");
                 if((var1==null ?  var3==null : var1.equals(var3))&&(var2==null ?  var4==null : var2.equals(var4)))
                 {
-                    if(rs.getString("TIP_USU").equals("EMPLEADO")){
-                        String tip=tipoempleado(rs.getString("CED_USU"));
-                    if(tip.equals("ADMINISTRADOR"))
+                    if(rs.getString("TIP_EMP").equals("ADMINISTRADOR"))
                     {
-                     Principal pr=new Principal();
+                     Principal pr=new Principal(rs.getString("NOM1_EMP")+" "+rs.getString("APE_PAT_EMP"));
                      this.dispose();
                      pr.show();
-                    }else if(tip.equals("SECRETARIO"))
+                    }else if(rs.getString("TIP_EMP").equals("SECRETARIO"))
                     {
-                     Principal pr=new Principal();
+                     Principal pr=new Principal(rs.getString("NOM1_EMP")+" "+rs.getString("APE_PAT_EMP"));
                      this.dispose();
                      pr.show();
-                    }else if(tip.equals("CAJERO"))
+                    }else if(rs.getString("TIP_EMP").equals("CAJERO"))
                     {
-                     Principal pr=new Principal();
+                     Principal pr=new Principal(rs.getString("NOM1_EMP")+" "+rs.getString("APE_PAT_EMP"));
                      this.dispose();
                      pr.show();
-                    }else if(tip.equals("BODEGUERO"))
+                    }else if(rs.getString("TIP_EMP").equals("BODEGUERO"))
                     {
-                     Principal pr=new Principal();
+                     Principal pr=new Principal(rs.getString("NOM1_EMP")+" "+rs.getString("APE_PAT_EMP"));
                      this.dispose();
                      pr.show();
                     }
-                    }else if(rs.getString("TIP_USU").equals("CLIENTE")){
-                        
-                    }
+                   
                 }else{
                     lblContraseña.setVisible(true);
                 }
@@ -79,6 +75,7 @@ public class frmAcceso extends javax.swing.JFrame {
         }
         
     }
+    
     public String tipoempleado(String ced){
         
          String sql="",res = "";
@@ -142,11 +139,16 @@ public class frmAcceso extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        btnCancelar.setText("Salir");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
-        jLabel3.setText("Sistema de Control de inventario");
+        jLabel3.setText("Bienvenidos al Sistema de Control de inventario");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingrese los datos"));
 
@@ -208,22 +210,21 @@ public class frmAcceso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnIngresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar)
                 .addGap(180, 180, 180))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,11 +232,11 @@ public class frmAcceso extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnIngresar)
@@ -255,6 +256,11 @@ public class frmAcceso extends javax.swing.JFrame {
         // TODO add your handling code here:
         control4(evt);
     }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

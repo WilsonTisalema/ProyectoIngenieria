@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,20 +27,21 @@ public class Proveedores extends javax.swing.JInternalFrame {
     public Proveedores() {
         initComponents();
         cargarProveedores("");
+        cargarModificar();
     }
     public void cargarProveedores(String men){
-        String[] titulos={"CODIGO","NOMBRE","DIRECCION","TELEFONO","E-MAIL"};
+        String[] titulos={"RUC","NOMBRE","DIRECCION","TELEFONO","E-MAIL"};
          String[] registros=new String[5];
         modelo=new DefaultTableModel(null,titulos);
         String sql="";
-        sql="select * from proveedores where COD_PROV LIKE '%"+men+"%'";
+        sql="select * from proveedores where RUC_PROV LIKE '%"+men+"%'";
         Conexion cc=new Conexion();
         Connection cn= cc.conectar();
         try {
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
-                registros[0]=rs.getString("COD_PROV");
+                registros[0]=rs.getString("RUC_PROV");
                 registros[1]=rs.getString("NOM_PROV").trim();
                 registros[2]=rs.getString("DIR_PROV").trim();
                 registros[3]=rs.getString("TEL_PROV").trim();
@@ -50,7 +53,21 @@ public class Proveedores extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+ public void cargarModificar(){
+        tblProveedores.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                 if(tblProveedores.getSelectedRow()!=-1){
+                    int fila=tblProveedores.getSelectedRow();
+                       frmProveedores emp=new frmProveedores(tblProveedores.getValueAt(fila, 0).toString(),"cargar"); 
+                       Principal.jDesktopPane1.add(emp);
+                       emp.show();
+                        
+                 }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

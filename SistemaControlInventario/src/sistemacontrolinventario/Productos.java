@@ -27,8 +27,8 @@ public class Productos extends javax.swing.JInternalFrame {
         cargarProductos("");
     }
     public void cargarProductos(String men){
-        String[] titulos={"CODIGO","CODIGO DE BARRAS","NOMBRE","FABRICANTE","PROVEEDOR","PRECIO COMPRA","PRECIO VENTA","PRESENTACION","CATEGORIA","MEDIDA","DESCRIPCION","STOCK"};
-         String[] registros=new String[12];
+        String[] titulos={"CODIGO DE BARRAS","NOMBRE","FABRICANTE","PROVEEDOR","PRECIO COMPRA","PRECIO VENTA","PRESENTACION","CATEGORIA","DESCRIPCION","STOCK"};
+         String[] registros=new String[10];
         modelo=new DefaultTableModel(null,titulos);
         String sql="";
         sql="select * from productos where COD_BAR_PROD LIKE '%"+men+"%'";
@@ -38,18 +38,16 @@ public class Productos extends javax.swing.JInternalFrame {
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
-                registros[0]=String.valueOf(rs.getInt("COD_PROD"));
-                registros[1]=rs.getString("COD_BAR_PROD").trim();
-                registros[2]=rs.getString("NOM_PROD").trim();
-                registros[3]=rs.getString("COD_FAB_PROD").trim();
-                registros[4]=rs.getString("COD_PROV_PER");
-                registros[5]=String.valueOf(rs.getFloat("PREC_COM_PROD"));
-                registros[6]=String.valueOf(rs.getFloat("PREC_VEN_PROD"));
-                registros[7]=rs.getString("PRESEN_PROD");
-                registros[8]=rs.getString("CAT_PROD");
-                registros[9]=rs.getString("MED_PROD");
-                registros[10]=rs.getString("DESC_PROD");
-                registros[11]=String.valueOf(rs.getInt("STOCK"));
+                registros[0]=rs.getString("COD_BAR_PROD").trim();
+                registros[1]=rs.getString("NOM_PROD").trim();
+                registros[2]=rs.getString("COD_FAB_PROD").trim();
+                registros[3]=rs.getString("COD_PROV_PER");
+                registros[4]=String.valueOf(rs.getFloat("PREC_COM_PROD"));
+                registros[5]=String.valueOf(rs.getFloat("PREC_VEN_PROD"));
+                registros[6]=rs.getString("PRESEN_PROD");
+                registros[7]=rs.getString("CAT_PROD");
+                registros[8]=rs.getString("DESC_PROD");
+                registros[9]=String.valueOf(rs.getInt("STOCK"));
                 modelo.addRow(registros);
             }
              tblProductos.setModel(modelo);

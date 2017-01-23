@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,6 +23,7 @@ public class frmFacturacion extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmFacturacion
      */
+    DefaultTableModel modelo;
     public frmFacturacion() {
         initComponents();
         inicio();
@@ -39,7 +41,6 @@ public class frmFacturacion extends javax.swing.JInternalFrame {
         lblCedula.setVisible(false);
         txtIva.setEnabled(false);
         txtTelefono.setEnabled(false);
-        cbxProductos.setEnabled(false);
         btnRegistrar.setVisible(false);
         txtFecha.setText(fecha());
     }
@@ -62,6 +63,39 @@ public class frmFacturacion extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+    }
+    public void buscarProducto(){
+        String sql="";
+        sql="select * from productos where COD_BAR_PROD LIKE '%"+txtProductos.getText()+"%'";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+              cbxProductos.addItem(rs.getString("NOM_PROD")+" "+rs.getString("DESC_PROD"));
+       
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    public void agregarProductos(){
+          String[] titulos={"NUMERO","PRODUCTO","CANTIDAD","PRECIO UNI","PRECIO"};
+         String[] registros=new String[4];
+        modelo=new DefaultTableModel(null,titulos);
+     
+                registros[0]=String.valueOf(1);
+                registros[1]=txtProductos.getText();
+                registros[2]=String.valueOf(1);
+                registros[3]=String.valueOf(1);
+                registros[4]=String.valueOf(1);
+                
+                modelo.addRow(registros);
+             tblDetalle.setModel(modelo);
+    }
+    public void guardar(){
+        
     }
     
     public String fecha(){
@@ -310,6 +344,17 @@ public class frmFacturacion extends javax.swing.JInternalFrame {
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        txtProductos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProductosKeyTyped(evt);
+            }
+        });
 
         jLabel9.setText("Subtotal:");
 
@@ -491,6 +536,18 @@ public class frmFacturacion extends javax.swing.JInternalFrame {
             lblCedula.setVisible(true);
         }
     }//GEN-LAST:event_txtCedulaFocusLost
+
+    private void txtProductosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductosKeyTyped
+        // TODO add your handling code here:
+        if(txtProductos.getText().length()==8){
+             buscarProducto();
+        }
+    }//GEN-LAST:event_txtProductosKeyTyped
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        agregarProductos();
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments

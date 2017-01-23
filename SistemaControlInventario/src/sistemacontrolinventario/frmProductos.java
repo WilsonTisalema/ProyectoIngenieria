@@ -100,7 +100,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
-               cbxFabricante.addItem(rs.getString("COD_FAB"));
+               cbxFabricante.addItem(rs.getString("NOM_FAB"));
               
             }
         } catch (Exception ex) {
@@ -116,7 +116,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
-               cbxFabricante.addItem(rs.getString("COD_PROV"));
+               cbxProveedor.addItem(rs.getString("NOM_PROV"));
               
             }
         } catch (Exception ex) {
@@ -130,8 +130,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
             String sql="",COD_BAR_PROD,NOM_PROD,COD_FAB_PROD,COD_PROV_PER,PRESEN_PROD,CAT_PRO,DESC_PROD;
             float PREC_COM_PROD,PREC_VEN_PROD;
             int STOCK;
-            sql="insert into productos(COD_BAR_PROD,NOM_PROD,COD_FAB_PROD,COD_PROV_PER,PRE_COM_PROD,PREC_VEN_PROD,PRESEN_PROD,CAT_PRO,DESC_PROD,STOCK) "
-                    + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            sql="insert into productos(COD_BAR_PROD,NOM_PROD,COD_FAB_PROD,COD_PROV_PER,PREC_COM_PROD,PREC_VEN_PROD,PRESEN_PROD,CAT_PROD,DESC_PROD,STOCK) "
+                    + "values(?,?,?,?,?,?,?,?,?,?)";
             COD_BAR_PROD=txtCodigo.getText().toString();
             NOM_PROD=txtNombre.getText().toString();
             COD_FAB_PROD=fabricante();
@@ -141,6 +141,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
             PRESEN_PROD=cbxMedida.getSelectedItem().toString();
             CAT_PRO=cbxCategoria.getSelectedItem().toString();
             DESC_PROD=txtCantidad.getText().toString();
+            STOCK=0;
             PreparedStatement psd=cn.prepareStatement(sql);
             psd.setString(1, COD_BAR_PROD);
             psd.setString(2, NOM_PROD);
@@ -151,7 +152,11 @@ public class frmProductos extends javax.swing.JInternalFrame {
             psd.setString(7, PRESEN_PROD);
             psd.setString(8, CAT_PRO);
             psd.setString(9, DESC_PROD);
-          
+            psd.setInt(10, STOCK);
+           int n = psd.executeUpdate();
+                if (n > 0) {
+                      JOptionPane.showMessageDialog(null, "Se inserto correctamente");
+                }
         } catch (SQLException ex) {
             Logger.getLogger(frmProductos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -162,7 +167,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         try {
             Conexion cc=new Conexion();
             Connection cn=cc.conectar();
-            sql="select COD_FAB from proveedores where NOM_FAB='"+cbxFabricante.getSelectedItem().toString()+"'";
+            sql="select COD_FAB from fabricantes where NOM_FAB='"+cbxFabricante.getSelectedItem().toString()+"'";
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
@@ -178,11 +183,11 @@ public class frmProductos extends javax.swing.JInternalFrame {
         try {
             Conexion cc=new Conexion();
             Connection cn=cc.conectar();
-            sql="select COD_PROV from proveedores where NOM_PROV='"+cbxProveedor.getSelectedItem().toString()+"'";
+            sql="select RUC_PROV from proveedores where NOM_PROV='"+cbxProveedor.getSelectedItem().toString()+"'";
             Statement psd=cn.createStatement();
             ResultSet rs=psd.executeQuery(sql);
             while(rs.next()){
-                res=rs.getString("COD_PROV");
+                res=rs.getString("RUC_PROV");
             }
         } catch (SQLException ex) {
             Logger.getLogger(frmProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -350,6 +355,11 @@ public class frmProductos extends javax.swing.JInternalFrame {
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
@@ -494,13 +504,13 @@ public class frmProductos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Categoria:");
 
-        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SNACKS", "BEBIDAS", "CEREALES", " " }));
 
         lblCategoria.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblCategoria.setForeground(new java.awt.Color(255, 0, 0));
         lblCategoria.setText("Elija la categoria del producto ");
 
-        cbxMedida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxMedida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UNITARIO", "PACK", "LOTES", " " }));
 
         lblMedida.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblMedida.setForeground(new java.awt.Color(255, 0, 0));
@@ -645,6 +655,11 @@ public class frmProductos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        guardar();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments

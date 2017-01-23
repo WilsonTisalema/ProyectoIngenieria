@@ -7,8 +7,12 @@ package sistemacontrolinventario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,24 +24,145 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmEmpleados
      */
-    public frmEmpleados(String fun) {
+    public frmEmpleados(String ced,String fun) {
         initComponents();
-        inicio(fun);
+        inicio(ced,fun);
     }
-    public void inicio(String fun){
+    public void inicio(String ced,String fun){
         if(fun.equals("nuevo")){
             desactivarInicio();
+            desactivarLabels();
             activar();
             btnGuardar.setEnabled(true);
             btnCancelar.setEnabled(true);
             btnBuscar.setVisible(false);
         provincias();
-        }else if(fun.equals("cargar")){
+        }else if(fun.equals("buscar")){
             btnBuscar.setVisible(true);
             desactivarInicio();
+            desactivarLabels();
             txtCedula.setEnabled(true);
+        }else if(fun.equals("cargar")){
+            desactivarLabels();
+            cargarDatos(ced);
         }
         
+    }
+    public void cargarDatos(String ced){
+        txtCedula.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        String sql="";
+        sql="select * from empleados";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                if(rs.getString("CED_EMP").equals(ced)){
+              txtCedula.setText(rs.getString("CED_EMP"));
+              txtNomUno.setText(rs.getString("NOM1_EMP"));
+              txtNomDos.setText(rs.getString("NOM2_EMP"));
+              txtApellidoP.setText(rs.getString("APE_PAT_EMP"));
+              txtApellidoM.setText(rs.getString("APE_MAT_EMP"));
+              if(rs.getString("EST_CIV_EMP").equals("SOLTERO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(0);
+              }else if(rs.getString("EST_CIV_EMP").equals("CASADO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(1);
+              }else if(rs.getString("EST_CIV_EMP").equals("DIVORCIADO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(2);
+              }else if(rs.getString("EST_CIV_EMP").equals("VIUDO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(3);
+              }else if(rs.getString("EST_CIV_EMP").equals("UNION LIBRE")){
+                  cbxEstadoCivil.setSelectedIndex(4);
+              }
+              if(rs.getString("SEXO_EMP").equals("M")){
+                 rbdMas.setSelected(true);
+              }else  if(rs.getString("SEXO_EMP").equals("F")){
+                 rbdFem.setSelected(true);
+              }
+              calendar.setDate(fecha(rs.getString("FEC_NAC_EMP")));
+              txtCelular.setText(rs.getString("CEL_EMP"));
+              txtTelefono.setText(rs.getString("TEL_EMP"));
+              txtEmail.setText(rs.getString("E_MAIL_EMP"));
+              txtDireccion.setText(rs.getString("DIR_EMP"));
+               if(rs.getString("TIP_EMP").equals("ADMINISTRADOR")){
+                  cbxTipoEmpleado.setSelectedIndex(0);
+              }else if(rs.getString("TIP_EMP").equals("SECRETARIO")){
+                  cbxTipoEmpleado.setSelectedIndex(1);
+              }else if(rs.getString("TIP_EMP").equals("CAJERO")){
+                  cbxTipoEmpleado.setSelectedIndex(2);
+              }else if(rs.getString("TIP_EMP").equals("BODEGUERO")){
+                  cbxTipoEmpleado.setSelectedIndex(3);
+              }
+              txtSalario.setText(String.valueOf(rs.getFloat("SAL_EMP")));
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    public Date fecha(String fecha){
+       SimpleDateFormat formato=new SimpleDateFormat("yyyy-MM-dd");
+       Date fec=null;
+        try {
+            fec=formato.parse(fecha);
+        } catch (ParseException ex) {
+
+        }
+       return fec;
+   }
+    public void buscar(String ced){
+        String sql="";
+        sql="select * from empleados";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                if(rs.getString("CED_EMP").equals(ced)){
+              txtCedula.setText(rs.getString("CED_EMP"));
+              txtNomUno.setText(rs.getString("NOM1_EMP"));
+              txtNomDos.setText(rs.getString("NOM2_EMP"));
+              txtApellidoP.setText(rs.getString("APE_PAT_EMP"));
+              txtApellidoM.setText(rs.getString("APE_MAT_EMP"));
+              if(rs.getString("EST_CIV_EMP").equals("SOLTERO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(0);
+              }else if(rs.getString("EST_CIV_EMP").equals("CASADO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(1);
+              }else if(rs.getString("EST_CIV_EMP").equals("DIVORCIADO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(2);
+              }else if(rs.getString("EST_CIV_EMP").equals("VIUDO(A)")){
+                  cbxEstadoCivil.setSelectedIndex(3);
+              }else if(rs.getString("EST_CIV_EMP").equals("UNION LIBRE")){
+                  cbxEstadoCivil.setSelectedIndex(4);
+              }
+              if(rs.getString("SEXO_EMP").equals("M")){
+                 rbdMas.setSelected(true);
+              }else  if(rs.getString("SEXO_EMP").equals("F")){
+                 rbdFem.setSelected(true);
+              }
+              calendar.setDate(fecha(rs.getString("FEC_NAC_EMP")));
+              txtCelular.setText(rs.getString("CEL_EMP"));
+              txtTelefono.setText(rs.getString("TEL_EMP"));
+              txtEmail.setText(rs.getString("E_MAIL_EMP"));
+              txtDireccion.setText(rs.getString("DIR_EMP"));
+               if(rs.getString("TIP_EMP").equals("ADMINISTRADOR")){
+                  cbxTipoEmpleado.setSelectedIndex(0);
+              }else if(rs.getString("TIP_EMP").equals("SECRETARIO")){
+                  cbxTipoEmpleado.setSelectedIndex(1);
+              }else if(rs.getString("TIP_EMP").equals("CAJERO")){
+                  cbxTipoEmpleado.setSelectedIndex(2);
+              }else if(rs.getString("TIP_EMP").equals("BODEGUERO")){
+                  cbxTipoEmpleado.setSelectedIndex(3);
+              }
+              txtSalario.setText(String.valueOf(rs.getFloat("SAL_EMP")));
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
     }
     public void limpiar(){
         txtCedula.setText("");
@@ -75,6 +200,13 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         cbxTipoEmpleado.setEnabled(false);        
         rbdMas.setEnabled(false);
         rbdFem.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        
+    }
+    public void desactivarLabels(){
         lblCedula.setVisible(false);
         lblNomUno.setVisible(false);
         lblNomDos.setVisible(false);
@@ -91,11 +223,6 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         lblProvincia.setVisible(false);
         lblCanton.setVisible(false);
         lblSalario.setVisible(false);
-        btnCancelar.setEnabled(false);
-        btnEliminar.setEnabled(false);
-        btnGuardar.setEnabled(false);
-        btnModificar.setEnabled(false);
-        
     }
     public void activar(){
         txtCedula.setEnabled(true);
@@ -122,17 +249,17 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         try {
                 Conexion cc = new Conexion();
                 Connection cn = cc.conectar();
-                String CED_EMP,NOM1_EMP,NOM2_EMP,APE_PAT_EMP,APE_MAT_EMP,SEXO_EMP = "",EST_CIV_EMP,FEC_NAC_EMP,PROV_PER_EMP,CAN_PER_EMP,DIR_EMP,TEL_EMP,CEL_EMP,E_MAIL_EMP,TIP_EMP;
+                String CED_EMP,NOM1_EMP,NOM2_EMP,APE_PAT_EMP,APE_MAT_EMP,CLAVE_EMP,SEXO_EMP = "",EST_CIV_EMP,FEC_NAC_EMP,PROV_PER_EMP,CAN_PER_EMP,DIR_EMP,TEL_EMP,CEL_EMP,E_MAIL_EMP,TIP_EMP;
                 Float SAL_EMP;
                 String sql = "";
-                sql = "insert into empleados(CED_EMP,NOM1_EMP,NOM2_EMP,APE_PAT_EMP,APE_MAT_EMP,SEXO_EMP,EST_CIV_EMP,FEC_NAC_EMP,PROV_PER_EMP,CAN_PER_EMP,DIR_EMP,TEL_EMP,CEL_EMP,E_MAIL_EMP,TIP_EMP,SAL_EMP)"
-                        + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                sql = "insert into empleados(CED_EMP,NOM1_EMP,NOM2_EMP,APE_PAT_EMP,APE_MAT_EMP,SEXO_EMP,EST_CIV_EMP,FEC_NAC_EMP,PROV_PER_EMP,CAN_PER_EMP,DIR_EMP,TEL_EMP,CEL_EMP,E_MAIL_EMP,TIP_EMP,SAL_EMP,CLAVE_EMP)"
+                        + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 CED_EMP=txtCedula.getText();
                 NOM1_EMP=txtNomUno.getText();
                 NOM2_EMP=txtNomDos.getText();
                 APE_PAT_EMP=txtApellidoP.getText();
                 APE_MAT_EMP=txtApellidoM.getText();
-                FEC_NAC_EMP=new SimpleDateFormat("dd/MMM/yyyy").format(calendar.getDate());;
+                FEC_NAC_EMP=new SimpleDateFormat("yyyy-MM-dd").format(calendar.getDate());;
                 if(rbdMas.isSelected()){
                     SEXO_EMP="M";
                 }else if(rbdFem.isSelected()){
@@ -147,6 +274,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 E_MAIL_EMP=txtEmail.getText();
                 TIP_EMP=cbxTipoEmpleado.getSelectedItem().toString();
                 SAL_EMP=Float.valueOf(txtSalario.getText());
+                CLAVE_EMP=txtCedula.getText();
                 PreparedStatement psd = cn.prepareStatement(sql);
                 psd.setString(1, CED_EMP);
                 psd.setString(2, NOM1_EMP);
@@ -164,19 +292,12 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
                 psd.setString(14, E_MAIL_EMP);
                 psd.setString(15, TIP_EMP);                
                 psd.setFloat(16, SAL_EMP);
-
+                psd.setString(17, CLAVE_EMP);
                 int n = psd.executeUpdate();
                 if (n > 0) {
                       JOptionPane.showMessageDialog(null, "Se inserto correctamente");
                 }
-        int c= JOptionPane.showOptionDialog(null,"Desea crear una cuenta de usuario para este empleado ahora","Elija una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Si","No"}, "No");
-        if(c==0){
-        frmUsuarios u=new frmUsuarios(txtCedula.getText(),"EMPLEADO","completar");
-        Principal.jDesktopPane1.add(u);
-        u.show();
-        }else if(c==1){
-         
-     }
+      
         limpiar();
 
             } catch (Exception ex) {
@@ -742,6 +863,11 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         lblNomDos.setText("Ingrese el segundo nombre del empleado");
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/1484780254_system-search.png"))); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1375,6 +1501,11 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        buscar(txtCedula.getText());
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1405,7 +1536,7 @@ public class frmEmpleados extends javax.swing.JInternalFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmEmpleados("").setVisible(true);
+                new frmEmpleados("","").setVisible(true);
             }
         });
     }

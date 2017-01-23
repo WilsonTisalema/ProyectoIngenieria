@@ -8,7 +8,9 @@ package sistemacontrolinventario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,21 +24,25 @@ public class frmProveedores extends javax.swing.JInternalFrame {
     /**
      * Creates new form frmProveedores
      */
-    public frmProveedores(String fun) {
+    public frmProveedores(String RUC,String fun) {
         initComponents();
-        inicio(fun);
+        inicio(RUC,fun);
     }
     
-    public void inicio(String fun){
+    public void inicio(String r,String fun){
         if(fun.equals("nuevo")){
             desactivar();
+            descativarLabel();
             activar();
             btnGuardar.setEnabled(true);
             btnCancelar.setEnabled(true);
         }else if(fun.equals("buscar")){
            desactivar();
+           descativarLabel();
            txtCodigo.setEnabled(true);
-           
+        }else if(fun.equals("cargar")){
+            descativarLabel();
+            cargarDatos(r);
         }
     }
     public void limpiar(){
@@ -52,15 +58,17 @@ public class frmProveedores extends javax.swing.JInternalFrame {
         txtEmail.setEnabled(false);
         txtNombre.setEnabled(false);
         txtTelefono.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        btnGuardar.setEnabled(false);
+    }
+    public void descativarLabel(){
         lblCodigo.setVisible(false);
         lblDireccion.setVisible(false);
         lblEmail.setVisible(false);
         lblNombre.setVisible(false);
         lblTelefono.setVisible(false);
-        btnCancelar.setEnabled(false);
-        btnEliminar.setEnabled(false);
-        btnModificar.setEnabled(false);
-        btnGuardar.setEnabled(false);
     }
     public void activar(){
         txtCodigo.setEnabled(true);
@@ -69,12 +77,36 @@ public class frmProveedores extends javax.swing.JInternalFrame {
         txtNombre.setEnabled(true);
         txtTelefono.setEnabled(true);
     }
+    public void cargarDatos(String ced){
+        txtCodigo.setEnabled(false);
+        btnGuardar.setEnabled(false);
+        String sql="";
+        sql="select * from proveedores";
+        Conexion cc=new Conexion();
+        Connection cn= cc.conectar();
+        try {
+            Statement psd=cn.createStatement();
+            ResultSet rs=psd.executeQuery(sql);
+            while(rs.next()){
+                if(rs.getString("RUC_PROV").equals(ced)){
+              txtCodigo.setText(rs.getString("RUC_PROV"));
+              txtNombre.setText(rs.getString("NOM_PROV"));
+              txtDireccion.setText(rs.getString("DIR_PROV"));
+              txtTelefono.setText(rs.getString("TEL_PROV"));
+              txtEmail.setText(rs.getString("E_MAIL_PROV"));
+             
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
     public void guardar(){
         try {
             Conexion cc=new Conexion();
             Connection cn=cc.conectar();
             String sql="",COD_PROV,NOM_PROV,DIR_PROV,TEL_PROV,E_MAIL_PROV;
-            sql="insert into proveedores(COD_PROV,NOM_PROV,DIR_PROV,TEL_PROV,E_MAIL_PROV) values(?,?,?,?,?)";
+            sql="insert into proveedores(RUC_PROV,NOM_PROV,DIR_PROV,TEL_PROV,E_MAIL_PROV) values(?,?,?,?,?)";
             COD_PROV=txtCodigo.getText();
             NOM_PROV=txtNombre.getText();
             DIR_PROV=txtDireccion.getText();
@@ -127,7 +159,7 @@ public class frmProveedores extends javax.swing.JInternalFrame {
                 + "DIR_PROV='"+txtDireccion.getText()+"',"
                 + "TEL_PROV='"+txtTelefono.getText()+"',"
                 + "E_MAIL_PROV='"+txtEmail.getText()+"'"
-                 +"where COD_PROV='"+txtCodigo.getText()+"'";
+                 +"where RUC_PROV='"+txtCodigo.getText()+"'";
         try {
              PreparedStatement psd=cn.prepareStatement(sql);
              int n=psd.executeUpdate();
@@ -144,7 +176,7 @@ public class frmProveedores extends javax.swing.JInternalFrame {
         Conexion cc=new Conexion();
         Connection cn= cc.conectar();
         String sql="";
-        sql="delete from proveedores where COD_PROV='"+txtCodigo.getText()+"'";
+        sql="delete from proveedores where RUC_PROV='"+txtCodigo.getText()+"'";
             try {
                 PreparedStatement psd=cn.prepareStatement(sql);
               int c=psd.executeUpdate();
@@ -314,6 +346,11 @@ public class frmProveedores extends javax.swing.JInternalFrame {
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelar.png"))); // NOI18N
@@ -436,6 +473,11 @@ public class frmProveedores extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        guardar();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -466,7 +508,7 @@ public class frmProveedores extends javax.swing.JInternalFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmProveedores("").setVisible(true);
+                new frmProveedores("","").setVisible(true);
             }
         });
     }
